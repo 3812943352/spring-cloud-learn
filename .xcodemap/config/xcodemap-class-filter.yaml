@@ -1,0 +1,17 @@
+autoDetectedPackages:
+- com.common.commonmodule
+- org.learning.apisupervisionservice
+- org.learning.contentsservice
+- org.learning.courseservice
+- org.learning.gatewayservice
+- org.learning.orderservice
+- org.learning.userservice
+- org.learning.videoservice
+enableAutoDetect: true
+ignoreSameClassCall: null
+ignoreSamePackageCall: null
+includedPackagePrefixes: null
+includedParentClasses: null
+name: xcodemap-filter
+recordMode: smart
+startOnDebug: false

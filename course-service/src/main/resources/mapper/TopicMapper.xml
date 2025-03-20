@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.learning.courseservice.mapper.TopicMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.learning.courseservice.entity.TopicEntity">
+        <id column="ID" property="id"/>
+        <result column="type" property="type"/>
+        <result column="stem" property="stem"/>
+        <result column="scores" property="scores"/>
+        <result column="parse" property="parse"/>
+        <result column="options" property="options" jdbcType="VARCHAR"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, type, stem, scores, parse, options
+    </sql>
+
+</mapper>

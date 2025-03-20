@@ -1,0 +1,24 @@
+###
+# @Author: 3812943352 168046603+3812943352@users.noreply.github.com
+# @Date: 2025-03-13 23:16:12
+# @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
+# @LastEditTime: 2025-03-14 09:37:11
+# @FilePath: contents-service/src/main/resources/application.yml
+# @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
+###
+spring:
+  application:
+    name: contents-service
+  config:
+    import: nacos:contents-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: c0331mgf
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        username: nacos
+        password: c0331mgf

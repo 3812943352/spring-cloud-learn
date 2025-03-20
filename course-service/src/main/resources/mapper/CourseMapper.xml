@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.learning.courseservice.mapper.CourseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.learning.courseservice.entity.CourseEntity">
+        <id column="ID" property="id"/>
+        <result column="price" property="price"/>
+        <result column="des" property="des"/>
+        <result column="name" property="name"/>
+        <result column="created" property="created"/>
+        <result column="updated" property="updated"/>
+        <result column="cover" property="cover"/>
+        <result column="type" property="type"/>
+        <result column="likeNum" property="likeNum"/>
+        <result column="col" property="col"/>
+        <result column="commentNum" property="commentNum"/>
+        <result column="paper" property="paper"/>
+        <result column="video" property="video"/>
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, price, des,name, created, updated, cover, type, likeNum, col, commentNum, paper, video
+    </sql>
+
+</mapper>

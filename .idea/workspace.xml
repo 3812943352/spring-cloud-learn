@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0ef73ac2-f4fa-4f6c-8343-eeaa802dab43" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-module/src/main/java/com/common/commonmodule/req/IdParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/common/commonmodule/req/IdParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/TopicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/TopicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/TopicServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;3812943352&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:3812943352/spring-cloud-learning.git&quot;,
+    &quot;accountId&quot;: &quot;8c0d4ee4-48ff-4f34-8a1f-59174ed1ed64&quot;
+  }
+}</component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+    <option name="hasSeenReactiveStreamsDisablingDialog" value="true" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.6.3" />
+        <option name="localRepository" value="D:\develop\repository" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="D:\develop\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2uCFwYlXc4G1aHdeCL2TMtwlDvt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AdminServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.ApiSupervisionServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.CertServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.ContentsServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.CourseServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.GatewayServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.OrderServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.ProgressServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;Spring Boot.VideoServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/develop/project/learning_platform/spring-cloud-learning/course-service/src/main/java/org/learning/courseservice/mapper&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.applicationServers&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.GeneratorMySQL.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.OrderServiceApplication.executor&quot;: &quot;Run&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言&quot;: [
+      &quot;MySQL&quot;
+    ]
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\mapper" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\entity" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\controller" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\service" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\service\impl" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\resources\mapper" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\contents-service\src\main\java\org\learning\contentsservice" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\contents-service\src\main\resources\mapper" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\order-service\src\main\resources\mapper" />
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\content-service\src\main\resources\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.learning.videoservice.service.impl" />
+      <recent name="org.learning.gatewayservice.mapper" />
+      <recent name="org.learning.gatewayservice.entity" />
+      <recent name="org.learning.gatewayservice.service.impl" />
+      <recent name="org.learning.gatewayservice.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="应用程序.GeneratorMySQL">
+    <configuration name="GeneratorMySQL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.common.commonmodule.generator.GeneratorMySQL" />
+      <module name="common-module" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.common.commonmodule.generator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.learning.orderservice.OrderServiceApplication" />
+      <module name="order-service.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.learning.orderservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiSupervisionServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ApiSupervision-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.learning.apisupervisionservice.ApiSupervisionServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContentsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="contents-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.learning.contentsservice.ContentsServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourseServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="course-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.learning.courseservice.CourseServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="gateway-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.learning.gatewayservice.GatewayServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="order-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.learning.orderservice.OrderServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.learning.userservice.UserServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VideoServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="video-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.learning.videoservice.VideoServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ApiSupervisionServiceApplication" />
+      <item itemvalue="Spring Boot.CourseServiceApplication" />
+      <item itemvalue="Spring Boot.ContentsServiceApplication" />
+      <item itemvalue="Spring Boot.GatewayServiceApplication" />
+      <item itemvalue="Spring Boot.OrderServiceApplication" />
+      <item itemvalue="Spring Boot.UserServiceApplication" />
+      <item itemvalue="Spring Boot.VideoServiceApplication" />
+      <item itemvalue="应用程序.GeneratorMySQL" />
+      <item itemvalue="应用程序.OrderServiceApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.GeneratorMySQL" />
+        <item itemvalue="应用程序.OrderServiceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="0ef73ac2-f4fa-4f6c-8343-eeaa802dab43" name="更改" comment="" />
+      <created>1741744894612</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741744894612</updated>
+      <workItem from="1741744895815" duration="959000" />
+      <workItem from="1741745865258" duration="629000" />
+      <workItem from="1741746504842" duration="400000" />
+      <workItem from="1741746920243" duration="1645000" />
+      <workItem from="1741748580195" duration="577000" />
+      <workItem from="1741749758403" duration="13723000" />
+      <workItem from="1741773945616" duration="4688000" />
+      <workItem from="1741782673722" duration="7964000" />
+      <workItem from="1741792736783" duration="238000" />
+      <workItem from="1741826089756" duration="22431000" />
+      <workItem from="1741862094863" duration="6015000" />
+      <workItem from="1741875261354" duration="1080000" />
+      <workItem from="1741876377407" duration="2094000" />
+      <workItem from="1741879025197" duration="29000" />
+      <workItem from="1741879062114" duration="48000" />
+      <workItem from="1741879111598" duration="305000" />
+      <workItem from="1741912426656" duration="11245000" />
+      <workItem from="1741935793140" duration="8719000" />
+      <workItem from="1741949061205" duration="14844000" />
+      <workItem from="1741999113492" duration="15285000" />
+      <workItem from="1742032520517" duration="1876000" />
+      <workItem from="1742093878720" duration="20402000" />
+      <workItem from="1742172699373" duration="14003000" />
+      <workItem from="1742207695741" duration="1638000" />
+      <workItem from="1742257960299" duration="4286000" />
+      <workItem from="1742265494936" duration="11771000" />
+      <workItem from="1742292517536" duration="4965000" />
+      <workItem from="1742344798250" duration="3477000" />
+      <workItem from="1742369341434" duration="1895000" />
+      <workItem from="1742378571446" duration="2937000" />
+      <workItem from="1742430727527" duration="9060000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-websocket" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".gitattributes" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

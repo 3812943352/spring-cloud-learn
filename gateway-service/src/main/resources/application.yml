@@ -1,0 +1,49 @@
+###
+# @Author: 3812943352 168046603+3812943352@users.noreply.github.com
+# @Date: 2025-03-12 10:30:12
+# @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
+# @LastEditTime: 2025-03-12 20:39:13
+# @FilePath: gateway-service/src/main/resources/application.yml
+# @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
+###
+###
+# @Author: 3812943352 168046603+3812943352@users.noreply.github.com
+# @Date: 2025-03-12 10:30:12
+# @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
+# @LastEditTime: 2025-03-12 19:55:17
+# @FilePath: gateway-service/src/main/resources/application.yml
+# @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
+###
+###
+# @Author: 3812943352 168046603+3812943352@users.noreply.github.com
+# @Date: 2025-03-12 10:30:12
+# @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
+# @LastEditTime: 2025-03-12 16:56:27
+# @FilePath: gateway-service/src/main/resources/application.yml
+# @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
+###
+###
+# @Author: 3812943352 168046603+3812943352@users.noreply.github.com
+# @Date: 2025-03-12 10:30:12
+# @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
+# @LastEditTime: 2025-03-12 13:35:45
+# @FilePath: gateway-service/src/main/resources/application.yml
+# @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
+###
+
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: nacos:gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: c0331mgf
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        username: nacos
+        password: c0331mgf

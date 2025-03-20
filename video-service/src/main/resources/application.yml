@@ -1,0 +1,32 @@
+###
+# @Author: 3812943352 168046603+3812943352@users.noreply.github.com
+# @Date: 2025-03-12 15:57:42
+# @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
+# @LastEditTime: 2025-03-14 09:38:17
+# @FilePath: video-service/src/main/resources/application.yml
+# @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
+###
+###
+# @Author: 3812943352 168046603+3812943352@users.noreply.github.com
+# @Date: 2025-03-12 15:57:42
+# @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
+# @LastEditTime: 2025-03-14 09:00:20
+# @FilePath: video-service/src/main/resources/application.yml
+# @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
+###
+spring:
+  application:
+    name: video-service
+  config:
+    import: nacos:video-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: c0331mgf
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        username: nacos
+        password: c0331mgf

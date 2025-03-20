@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.learning.courseservice.mapper.ERecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.learning.courseservice.entity.ERecordEntity">
+        <id column="ID" property="id"/>
+        <result column="user" property="user"/>
+        <result column="paper" property="paper"/>
+        <result column="start" property="start"/>
+        <result column="scores" property="scores"/>
+        <result column="options" property="options"/>
+        <result column="right" property="right"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, user, paper, start
+        , scores, options, right
+    </sql>
+
+</mapper>

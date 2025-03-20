@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.learning.gatewayservice.mapper.ApiMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.learning.gatewayservice.entity.ApiEntity">
+        <id column="ID" property="id"/>
+        <result column="api_title" property="apiTitle"/>
+        <result column="api_des" property="apiDes"/>
+        <result column="open_method" property="openMethod"/>
+        <result column="api" property="api"/>
+        <result column="api_controller" property="apiController"/>
+        <result column="api_method" property="apiMethod"/>
+        <result column="api_format" property="apiFormat"/>
+        <result column="api_demo" property="apiDemo"/>
+        <result column="api_table" property="apiTable"/>
+        <result column="times" property="times"/>
+        <result column="visits" property="visits"/>
+        <result column="errors" property="errors"/>
+        <result column="auth" property="auth"/>
+
+    </resultMap>
+    <select id="getAllApi" resultType="java.lang.String">
+        SELECT api
+        FROM api
+    </select>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID
+        , api_title, api_des, open_method, api, api_controller, api_method, api_format, api_demo, api_table, times, visits,errors,auth
+    </sql>
+
+</mapper>

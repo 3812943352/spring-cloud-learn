@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.learning.apisupervisionservice.mapper.GatewayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.learning.apisupervisionservice.entity.GatewayEntity">
+        <id column="ID" property="id"/>
+        <result column="username" property="username"/>
+        <result column="req_add" property="reqAdd"/>
+        <result column="req_method" property="reqMethod"/>
+        <result column="req_ip" property="reqIp"/>
+        <result column="ua" property="ua"/>
+        <result column="req_controller" property="reqController"/>
+        <result column="req_name" property="reqName"/>
+        <result column="req_code" property="reqCode"/>
+        <result column="errorinfo" property="errorinfo"/>
+        <result column="ContentType" property="contentType"/>
+        <result column="ContentLength" property="contentLength"/>
+        <result column="uri" property="uri"/>
+        <result column="jwt" property="jwt"/>
+        <result column="req_time" property="reqTime"/>
+        <result column="res_time" property="resTime"/>
+        <result column="ms" property="ms"/>
+        <result column="isBan" property="isBan"/>
+        <result column="banTime" property="banTime"/>
+    </resultMap>
+    <select id="selectPageWithApiTitle" resultType="org.learning.apisupervisionservice.entity.GatewayEntity">
+        SELECT g.ID,
+               g.username,
+               g.req_add,
+               g.req_method,
+               g.req_ip,
+               g.ua,
+               g.req_controller,
+               g.req_code,
+               g.errorinfo,
+               g.ContentType,
+               g.ContentLength,
+               g.uri,
+               g.jwt,
+               g.req_time,
+               g.res_time,
+               g.ms,
+               g.isBan,
+               g.banTime,
+               a.api_title AS req_name
+        FROM gateway g
+                 LEFT JOIN
+             api a ON g.req_name = a.api
+        ORDER BY g.ID DESC
+    </select>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, username, req_add, req_method, req_ip, ua, req_controller, req_name, req_code, errorinfo, ContentType, ContentLength, uri, jwt, req_time, res_time, ms, isBan, banTime
+    </sql>
+
+</mapper>
