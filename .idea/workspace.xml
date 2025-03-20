@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0ef73ac2-f4fa-4f6c-8343-eeaa802dab43" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-module/src/main/java/com/common/commonmodule/req/IdParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/common/commonmodule/req/IdParam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/TopicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/TopicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/TopicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/PaperEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/PaperEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/PaperServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/PaperServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/resources/mapper/PaperMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/resources/mapper/PaperMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,12 +51,12 @@
     &quot;assignee&quot;: &quot;3812943352&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:3812943352/spring-cloud-learning.git&quot;,
-    &quot;accountId&quot;: &quot;8c0d4ee4-48ff-4f34-8a1f-59174ed1ed64&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:3812943352/spring-cloud-learn.git",
+    "accountId": "8c0d4ee4-48ff-4f34-8a1f-59174ed1ed64"
   }
-}</component>
+}]]></component>
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
     <option name="hasSeenReactiveStreamsDisablingDialog" value="true" />
@@ -317,6 +317,7 @@
       <workItem from="1742369341434" duration="1895000" />
       <workItem from="1742378571446" duration="2937000" />
       <workItem from="1742430727527" duration="9060000" />
+      <workItem from="1742466695849" duration="4672000" />
     </task>
     <servers />
   </component>

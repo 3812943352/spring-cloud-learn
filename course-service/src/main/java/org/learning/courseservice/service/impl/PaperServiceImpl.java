@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:42
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-18 16:45:11
+ * @LastEditTime: 2025-03-20 22:51:23
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/PaperServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -44,29 +44,30 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, PaperEntity> impl
 
     @Override
     public Result<?> addPaper(PaperEntity paperEntity) {
-        try {
-            Integer courseID = paperEntity.getCourse();
-            CourseEntity courseEntity = courseMapper.selectOne(new QueryWrapper<CourseEntity>().eq("id", courseID));
-            if (courseEntity == null) {
-                return Result.failure(202, "课程不存在");
-            }
-            if (courseEntity.getPaper() == 1) {
-                return Result.failure(202, "该课程已添加试卷");
-            }
-            courseEntity.setPaper(1);
-            long date = System.currentTimeMillis() / 1000;
-            paperEntity.setCreated(date);
-            paperEntity.setUpdated(date);
-            paperEntity.setTopics("[]");
-            courseMapper.updateById(courseEntity);
-            boolean save = save(paperEntity);
-            if (save) {
-                return Result.success(200, "添加成功");
-            }
-            return Result.failure(202, "添加失败");
-        } catch (Exception e) {
-            return Result.failure(202, "添加失败" + e.getMessage());
+//        try {
+        Integer courseID = paperEntity.getCourse();
+        CourseEntity courseEntity = courseMapper.selectOne(new QueryWrapper<CourseEntity>().eq("id", courseID));
+        if (courseEntity == null) {
+            return Result.failure(202, "课程不存在");
         }
+        if (courseEntity.getPaper() == 1) {
+            return Result.failure(202, "该课程已添加试卷");
+        }
+        courseEntity.setPaper(1);
+//            List<PaperEntity.Topics> topicsList = new ArrayList<>();
+        long date = System.currentTimeMillis() / 1000;
+        paperEntity.setCreated(date);
+        paperEntity.setUpdated(date);
+//            paperEntity.setTopics(topicsList);
+        courseMapper.updateById(courseEntity);
+        boolean save = save(paperEntity);
+        if (save) {
+            return Result.success(200, "添加成功");
+        }
+        return Result.failure(202, "添加失败");
+//        } catch (Exception e) {
+//            return Result.failure(202, "添加失败" + e.getMessage());
+//        }
     }
 
     @Override

@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:19
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-20 10:43:08
+ * @LastEditTime: 2025-03-20 20:13:47
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/TopicController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -68,5 +68,4 @@ public class TopicController {
     ) {
         return topicService.blur(pageNum, pageSize, word, type);
     }
-
 }

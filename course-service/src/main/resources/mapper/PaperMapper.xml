@@ -7,7 +7,8 @@
         <id column="ID" property="id"/>
         <result column="course" property="course"/>
         <result column="name" property="name"/>
-        <result column="topics" property="topics"/>
+        <result column="topics" property="topics" jdbcType="VARCHAR"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
         <result column="pass" property="pass"/>
         <result column="time" property="time"/>
         <result column="sequence" property="sequence"/>
