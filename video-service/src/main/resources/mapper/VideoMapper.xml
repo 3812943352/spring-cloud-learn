@@ -4,21 +4,19 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="org.learning.videoservice.entity.VideoEntity">
-        <id column="id" property="id"/>
+        <id column="ID" property="id"/>
         <result column="title" property="title"/>
-        <result column="description" property="description"/>
+        <result column="des" property="des"/>
         <result column="content_path" property="contentPath"/>
-        <result column="duration" property="duration"/>
         <result column="uploader" property="uploader"/>
         <result column="created" property="created"/>
         <result column="updated" property="updated"/>
         <result column="class_id" property="classId"/>
-        <result column="cover" property="cover"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, title, description, content_path, duration, uploader, created, updated, class_id, cover
+        ID, title, des, content_path, uploader, created, updated, class_id
     </sql>
 
 </mapper>

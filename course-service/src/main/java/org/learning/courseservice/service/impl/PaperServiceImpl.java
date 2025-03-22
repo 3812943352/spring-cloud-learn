@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:42
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-20 22:51:23
+ * @LastEditTime: 2025-03-21 16:31:42
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/PaperServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */

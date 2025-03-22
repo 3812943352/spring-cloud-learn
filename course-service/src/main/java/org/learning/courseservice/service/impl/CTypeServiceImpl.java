@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-18 21:24:41
+ * @LastEditTime: 2025-03-21 16:32:09
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -13,17 +13,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.common.commonmodule.resp.Result;
 import org.learning.courseservice.entity.CourseEntity;
-import org.learning.courseservice.entity.PaperEntity;
 import org.learning.courseservice.mapper.CTypeMapper;
 import org.learning.courseservice.entity.CTypeEntity;
 import org.learning.courseservice.mapper.CourseMapper;
 import org.learning.courseservice.service.CTypeService;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -81,18 +75,15 @@ public class CTypeServiceImpl extends ServiceImpl<CTypeMapper, CTypeEntity> impl
     }
 
     @Override
-    public Result<?> getType() {
-        List<CTypeEntity> cTypeEntities = this.list(new QueryWrapper<CTypeEntity>().select("ID", "type"));
-
-        List<Map<String, Object>> formattedList = new ArrayList<>();
-        for (CTypeEntity cType : cTypeEntities) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("value", cType.getId());
-            map.put("label", cType.getType());
-            formattedList.add(map);
+    public Result<?> getType(Integer pageNum, Integer pageSize) {
+        try {
+            Page<CTypeEntity> resultPage = new Page<>(pageNum, pageSize);
+            QueryWrapper<CTypeEntity> queryWrapper = new QueryWrapper<>();
+            resultPage = this.page(resultPage, queryWrapper);
+            return Result.success(resultPage);
+        } catch (Exception e) {
+            return Result.failure(202, "查询失败" + e.getMessage());
         }
-
-        return Result.success(formattedList);
     }
 
 

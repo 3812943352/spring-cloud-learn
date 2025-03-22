@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:42
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-20 10:40:01
+ * @LastEditTime: 2025-03-21 12:44:43
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/TopicServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -75,10 +75,8 @@ public class TopicServiceImpl extends ServiceImpl<TopicMapper, TopicEntity> impl
         Page<TopicEntity> resultPage = new Page<>(pageNum, pageSize);
         QueryWrapper<TopicEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("type", type);
-        if (word != null && !word.isEmpty()) {
-            queryWrapper.or(wrapper -> wrapper
-                    .like("stem", word)
-            );
+        if (word != null && !word.trim().isEmpty()) {
+            queryWrapper.and(wrapper -> wrapper.like("stem", word));
         }
         resultPage = this.page(resultPage, queryWrapper);
         return Result.success(resultPage, "请求成功");

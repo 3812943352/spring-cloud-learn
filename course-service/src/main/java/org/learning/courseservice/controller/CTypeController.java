@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-15 21:30:09
+ * @LastEditTime: 2025-03-21 16:31:42
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -50,9 +50,9 @@ public class CTypeController {
     }
 
 
-    @Operation(summary = "课程类别列表")
+    @Operation(summary = "课程分页")
     @PostMapping(value = "/getType")
-    public Result<?> getType() {
-        return cTypeService.getType();
+    public Result<?> getType(@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize) {
+        return cTypeService.getType(pageNum, pageSize);
     }
 }

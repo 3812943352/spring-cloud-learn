@@ -2,12 +2,13 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-15 09:50:51
+ * @LastEditTime: 2025-03-22 17:29:56
  * @FilePath: video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
 package org.learning.videoservice.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.common.commonmodule.resp.Result;
 import org.learning.videoservice.mapper.VideoMapper;
@@ -23,11 +24,8 @@ import java.net.URLEncoder;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static java.nio.file.StandardOpenOption.*;
@@ -47,22 +45,41 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
 
 
     @Override
-    public Result<?> saveVideo(MultipartFile file, String category,
+    public Result<?> saveVideo(MultipartFile file, String category, VideoEntity videoEntity,
                                String name, int chunkNumber, int totalChunks, String fileHash) {
+        String title = videoEntity.getTitle();
+        VideoEntity existfile = this.getOne(new QueryWrapper<VideoEntity>().eq("title", title));
+        if (existfile != null) {
+            return Result.failure(202, "该文件数据已存在: " + title);
 
+        }
 
         try {
             // 生成唯一文件名
             String uniqueFileName = generateUniqueName(name, fileHash);
             Path storagePath = buildCategoryPath(category);
-
             // 处理分片上传
-            return handleChunkUpload(file, storagePath, uniqueFileName, chunkNumber, totalChunks);
+            return handleChunkUpload(file, storagePath, uniqueFileName, chunkNumber, totalChunks, videoEntity);
         } catch (Exception e) {
             return Result.failure(500, "上传异常: " + e.getMessage());
         }
     }
-    
+
+    public boolean saveData(VideoEntity videoEntity, String fileHash) {
+
+        long date = System.currentTimeMillis() / 1000;
+        videoEntity.setCreated(date);
+        videoEntity.setUpdated(date);
+        videoEntity.setContentPath(fileHash);
+        try {
+            this.saveOrUpdate(videoEntity, new QueryWrapper<VideoEntity>().eq("ID", videoEntity.getId()));
+            return true;
+        } catch (Exception e) {
+
+            return false;
+        }
+    }
+
     private String generateUniqueName(String originalName, String fileHash) {
         // 提取文件扩展名
         String extension = "";
@@ -71,9 +88,8 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
             extension = originalName.substring(dotIndex);
         }
 
-        return LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE)
-                + "_" + fileHash.substring(0, 8)
-                + "_" + extension; // 保留原始扩展名
+        return fileHash
+                + extension;
     }
 
     // 构建分类存储路径（包含日期细分）
@@ -88,7 +104,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
     // 分片处理核心逻辑
     private Result<?> handleChunkUpload(MultipartFile file, Path storagePath,
                                         String fileName, int chunkNumber,
-                                        int totalChunks) {
+                                        int totalChunks, VideoEntity videoEntity) {
         try {
             // 创建基础目录和临时目录
             Files.createDirectories(storagePath);
@@ -106,13 +122,14 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
 
             // 写入分片
             file.transferTo(chunkFile);
-
             // 检查合并条件
             if (isAllChunksReady(storagePath, fileName, totalChunks)) {
-                return mergeChunks(storagePath, fileName, totalChunks);
+
+
+                return mergeChunks(storagePath, fileName, totalChunks, videoEntity);
             }
 
-            return Result.success("分片接收成功", chunkNumber + "/" + totalChunks);
+            return Result.success("分片接收成功" + chunkNumber + "/" + totalChunks);
         } catch (IOException e) {
             return Result.failure(500, "上传异常: " + e.getMessage());
         }
@@ -130,10 +147,11 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
 
     // 分片合并方法
     private Result<?> mergeChunks(Path storagePath, String fileName,
-                                  int totalChunks) {
+                                  int totalChunks, VideoEntity videoEntity) {
         try {
             Path targetFile = storagePath.resolve(fileName);
             Path tempDir = storagePath.resolve("temp");
+
 
             try (FileChannel destChannel =
                          FileChannel.open(targetFile, CREATE, WRITE, APPEND)) {
@@ -146,10 +164,17 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
                     Files.delete(chunk);
                 }
             }
+
             Files.delete(tempDir);
-            return Result.success("文件合并完成");
+            if (this.saveData(videoEntity, fileName)) {
+                return Result.success(208, "文件上传并保存数据成功");
+            } else {
+                Files.delete(targetFile);
+                return Result.failure(208, "上传失败，请重新上传");
+
+            }
         } catch (IOException e) {
-            return Result.failure(500, "合并失败: " + e.getMessage());
+            return Result.failure(208, "合并失败: " + e.getMessage());
         }
     }
 }

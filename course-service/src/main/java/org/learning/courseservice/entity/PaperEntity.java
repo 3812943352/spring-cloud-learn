@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:26
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-20 23:02:18
+ * @LastEditTime: 2025-03-21 14:51:17
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/PaperEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -18,6 +18,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,7 +53,7 @@ public class PaperEntity extends Model<PaperEntity> {
 
     @Schema(description = "试卷下试题ID列表")
     @TableField(value = "topics", typeHandler = JacksonTypeHandler.class)
-    private List<Integer> topics;
+    private Topics topics;
 
     @Schema(description = "及格分数")
     @TableField("pass")
@@ -87,15 +88,48 @@ public class PaperEntity extends Model<PaperEntity> {
         return this.id;
     }
 
-    public static class Topics {
-        private String id;
+    public Topics getTopics() {
+        return topics;
+    }
 
-        public String getId() {
-            return id;
+    public void setTopics(Topics topics) {
+        this.topics = topics;
+    }
+
+    public static class Topics {
+        @JsonProperty("radio")
+        private List<Integer> radio;
+
+        @JsonProperty("choice")
+        private List<Integer> choice;
+
+        @JsonProperty("judge")
+        private List<Integer> judge;
+
+        // Getters and Setters
+
+        public List<Integer> getRadio() {
+            return radio;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setRadio(List<Integer> radio) {
+            this.radio = radio;
+        }
+
+        public List<Integer> getChoice() {
+            return choice;
+        }
+
+        public void setChoice(List<Integer> choice) {
+            this.choice = choice;
+        }
+
+        public List<Integer> getJudge() {
+            return judge;
+        }
+
+        public void setJudge(List<Integer> judge) {
+            this.judge = judge;
         }
 
 

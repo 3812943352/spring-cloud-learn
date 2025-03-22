@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-13 22:43:25
+ * @LastEditTime: 2025-03-22 16:35:46
  * @FilePath: video-service/src/main/java/org/learning/videoservice/entity/VideoEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -36,7 +36,7 @@ import java.io.Serializable;
 public class VideoEntity extends Model<VideoEntity> {
 
     @Schema(description = "视频ID")
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     @Schema(description = "视频标题，最大长度255字符，不可为空")
@@ -44,16 +44,12 @@ public class VideoEntity extends Model<VideoEntity> {
     private String title;
 
     @Schema(description = "视频描述")
-    @TableField("description")
-    private String description;
+    @TableField("des")
+    private String des;
 
     @Schema(description = "视频内容存储路径，最大长度500字符，不可为空")
     @TableField("content_path")
     private String contentPath;
-
-    @Schema(description = "视频时长，单位为秒，不可为空")
-    @TableField("duration")
-    private Integer duration;
 
     @Schema(description = "上传用户ID，只能是admin用户，不可为空")
     @TableField("uploader")
@@ -71,9 +67,6 @@ public class VideoEntity extends Model<VideoEntity> {
     @TableField("class_id")
     private Long classId;
 
-    @Schema(description = "视频封面路径")
-    @TableField("cover")
-    private String cover;
 
     @Override
     public Serializable pkVal() {
