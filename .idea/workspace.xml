@@ -6,25 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0ef73ac2-f4fa-4f6c-8343-eeaa802dab43" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.xcodemap/config/xcodemap-class-filter.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.xcodemap/config/xcodemap-class-filter.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/PaperEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/PaperEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/CTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/CTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/PaperServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/PaperServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/TopicServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/controller/ProgressController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/controller/VideoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/entity/ProgressEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/entity/VideoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/entity/VideoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/mapper/ProgressMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/ProgressService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/VideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/VideoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/impl/ProgressServiceImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/resources/mapper/ProgressMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/resources/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/resources/mapper/VideoMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,6 +320,8 @@
       <workItem from="1742517575949" duration="7737000" />
       <workItem from="1742552734915" duration="3686000" />
       <workItem from="1742603516227" duration="14991000" />
+      <workItem from="1742640385979" duration="1284000" />
+      <workItem from="1742696111101" duration="17424000" />
     </task>
     <servers />
   </component>
