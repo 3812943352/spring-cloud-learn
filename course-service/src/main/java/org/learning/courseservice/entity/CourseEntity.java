@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-17 15:05:01
+ * @LastEditTime: 2025-03-24 11:35:22
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/CourseEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -13,10 +13,14 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -32,7 +36,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Accessors(chain = true)
-@TableName("course")
+@TableName(value = "course", autoResultMap = true)
 @Schema(name = "ClassEntity", description = "$!{table.comment}")
 public class CourseEntity extends Model<CourseEntity> {
 
@@ -85,8 +89,9 @@ public class CourseEntity extends Model<CourseEntity> {
     private Integer paper;
 
     @Schema(description = "课程是否添加视频")
-    @TableField("video")
-    private Integer video;
+    @TableField(value = "video", typeHandler = JacksonTypeHandler.class)
+    private List<Integer> video;
+
 
     @Override
     public Serializable pkVal() {

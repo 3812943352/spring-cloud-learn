@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-21 16:32:09
+ * @LastEditTime: 2025-03-24 16:08:44
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -18,6 +18,8 @@ import org.learning.courseservice.entity.CTypeEntity;
 import org.learning.courseservice.mapper.CourseMapper;
 import org.learning.courseservice.service.CTypeService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -66,9 +68,9 @@ public class CTypeServiceImpl extends ServiceImpl<CTypeMapper, CTypeEntity> impl
         if (this.getOne(new QueryWrapper<CTypeEntity>().eq("id", id)) == null) {
             return Result.failure("课程类别不存在");
         }
-        CourseEntity courseEntity = courseMapper.selectOne(new QueryWrapper<CourseEntity>().eq("type", id));
-        if (courseEntity != null) {
-            return Result.failure("该课程类别下有课程" + courseEntity.getName() + "，无法删除");
+        List<CourseEntity> courseEntities = courseMapper.selectList(new QueryWrapper<CourseEntity>().eq("type", id));
+        if (!courseEntities.isEmpty()) {
+            return Result.failure("该课程类别下有课程" + courseEntities + "，无法删除");
         }
         this.removeById(id);
         return Result.success("删除成功");
@@ -86,5 +88,10 @@ public class CTypeServiceImpl extends ServiceImpl<CTypeMapper, CTypeEntity> impl
         }
     }
 
+    @Override
+    public Result<?> listType() {
+        List<CTypeEntity> list = this.list(new QueryWrapper<>());
+        return Result.success(list);
+    }
 
 }

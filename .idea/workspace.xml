@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ef73ac2-f4fa-4f6c-8343-eeaa802dab43" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/controller/VideoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/VideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/VideoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ATypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ATypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/ArticleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/ArticleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ATypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ATypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ATypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ATypeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/CourseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/CourseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/CTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/CTypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-service/src/main/resources/mapper/CourseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/resources/mapper/CourseMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +125,7 @@
     &quot;Spring Boot.VideoServiceApplication.executor&quot;: &quot;JRebel Executor&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/develop/project/learning_platform/spring-cloud-learning/course-service/src/main/java/org/learning/courseservice/mapper&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/develop/project/learning_platform/spring-cloud-learning/contents-service/src/main/java/org/learning/contentsservice/config&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -121,7 +136,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.applicationServers&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
     &quot;应用程序.GeneratorMySQL.executor&quot;: &quot;Run&quot;,
@@ -144,11 +159,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\contents-service\src\main\java\org\learning\contentsservice\config" />
       <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\mapper" />
       <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\entity" />
       <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\controller" />
       <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\service" />
-      <recent name="D:\develop\project\learning_platform\spring-cloud-learning\course-service\src\main\java\org\learning\courseservice\service\impl" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\develop\project\learning_platform\spring-cloud-learning\videos\course" />
@@ -158,11 +173,11 @@
       <recent name="D:\develop\project\learning_platform\spring-cloud-learning\order-service\src\main\resources\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.learning.videoservice.config" />
       <recent name="org.learning.videoservice.service.impl" />
       <recent name="org.learning.gatewayservice.mapper" />
       <recent name="org.learning.gatewayservice.entity" />
       <recent name="org.learning.gatewayservice.service.impl" />
-      <recent name="org.learning.gatewayservice.service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,7 +336,13 @@
       <workItem from="1742552734915" duration="3686000" />
       <workItem from="1742603516227" duration="14991000" />
       <workItem from="1742640385979" duration="1284000" />
-      <workItem from="1742696111101" duration="17424000" />
+      <workItem from="1742696111101" duration="17499000" />
+      <workItem from="1742731219398" duration="2735000" />
+      <workItem from="1742776696878" duration="1456000" />
+      <workItem from="1742781006307" duration="13095000" />
+      <workItem from="1742810231773" duration="7637000" />
+      <workItem from="1742862830571" duration="6342000" />
+      <workItem from="1742872481870" duration="16372000" />
     </task>
     <servers />
   </component>

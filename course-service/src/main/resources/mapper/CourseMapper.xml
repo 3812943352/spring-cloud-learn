@@ -16,7 +16,8 @@
         <result column="col" property="col"/>
         <result column="commentNum" property="commentNum"/>
         <result column="paper" property="paper"/>
-        <result column="video" property="video"/>
+        <result column="video" property="video" jdbcType="VARCHAR"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
 
     </resultMap>
 

@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-18 16:53:18
+ * @LastEditTime: 2025-03-25 12:11:14
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -134,7 +134,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseEntity> i
             resultPage = this.page(resultPage, queryWrapper);
             return Result.success(resultPage);
         } catch (Exception e) {
-            return Result.failure(202, "查询失败" + e.getMessage());
+            return Result.failure(202, "查询失败" + e);
         }
     }
 
@@ -200,7 +200,6 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseEntity> i
             }
             return Result.failure(202, "删除失败: " + filename);
         } catch (MyBatisSystemException e) {
-            System.out.println(e);
 
             // 记录根本原因
             Throwable rootCause = e.getRootCause();
@@ -208,11 +207,9 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseEntity> i
             return Result.failure(202, errorMessage);
         } catch (IOException e) {
             if (isDel) {
-                System.out.println(e);
 
                 return Result.failure(202, "删除成功但无法删除文件: " + filename + "错误：" + e);
             }
-            System.out.println(e);
             return Result.failure(202, "删除失败: " + filename + "错误：" + e);
         }
     }

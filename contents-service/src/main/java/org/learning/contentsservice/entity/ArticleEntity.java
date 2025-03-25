@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 09:07:03
+ * @LastEditTime: 2025-03-25 15:14:03
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/entity/ArticleEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -52,8 +52,8 @@ public class ArticleEntity extends Model<ArticleEntity> {
     private Integer collection;
 
     @Schema(description = "点赞量")
-    @TableField("like")
-    private Integer like;
+    @TableField("likes")
+    private Integer likes;
 
     @Schema(description = "评论量")
     @TableField("comment")
@@ -74,6 +74,31 @@ public class ArticleEntity extends Model<ArticleEntity> {
     @Schema(description = "标题")
     @TableField("title")
     private String title;
+
+    @Schema(description = "图片1")
+    @TableField("img1")
+    private String img1;
+
+    @Schema(description = "图片2")
+    @TableField("img2")
+    private String img2;
+
+    @Schema(description = "图片3")
+    @TableField("img3")
+    private String img3;
+
+    @Schema(description = "图片4")
+    @TableField("img4")
+    private String img4;
+
+    @Schema(description = "图片5")
+    @TableField("img5")
+    private String img5;
+
+
+    @Schema(description = "是否首页显示")
+    @TableField("isShow")
+    private Integer isShow;
 
     @Override
     public Serializable pkVal() {

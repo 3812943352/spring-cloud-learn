@@ -8,17 +8,23 @@
         <result column="type" property="type"/>
         <result column="visit" property="visit"/>
         <result column="collection" property="collection"/>
-        <result column="like" property="like"/>
+        <result column="likes" property="likes"/>
         <result column="comment" property="comment"/>
         <result column="created" property="created"/>
         <result column="updated" property="updated"/>
         <result column="content" property="content"/>
         <result column="title" property="title"/>
+        <result column="img1" property="img1"/>
+        <result column="img2" property="img2"/>
+        <result column="img3" property="img3"/>
+        <result column="img4" property="img4"/>
+        <result column="img5" property="img5"/>
+        <result column="isShow" property="isShow"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, type, visit, collection, like, comment, created, updated, content, title
+        ID, type, visit, collection, likes, comment, created, updated, content, title,img1,img2,img3,img4,img5,isShow
     </sql>
 
 </mapper>
