@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-25 17:53:41
+ * @LastEditTime: 2025-03-25 22:05:17
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/ArticleServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -34,6 +34,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * <p>
@@ -50,7 +51,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
     @Value("${regex1}")
     private String regex1;
     @Value("${regex2}")
-    private String regex2;
+    private String rege2;
 
     @Override
     public Result<?> addArticle(MultipartFile img1, MultipartFile img2,
@@ -349,7 +350,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
                             MultipartFile img3, MultipartFile img4,
                             MultipartFile img5, ArticleEntity article) {
         String content = article.getContent();
-        String regex2 = "!\\[]\\(http://localhost:9999/contents/images/([^\\)]+\\.(jpg|png|webp))\\)"; // 假设的正则
+        String regex2 = rege2;
         Pattern pattern = Pattern.compile(regex2);
         Matcher matcher = pattern.matcher(content);
         List<String> imgPaths = new ArrayList<>();
@@ -395,10 +396,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
             if (oldPath != null && !oldPath.isEmpty()) {
                 Path filePath = uploadPath.resolve(oldPath);
                 try {
-                    boolean isDeleted = Files.deleteIfExists(filePath);
-                    if (isDeleted) {
-                        updateArticleImageFields(articleEntity, oldPath);
-                    }
+                    Files.deleteIfExists(filePath);
+
                 } catch (IOException e) {
                     return Result.failure(202, "文件删除失败：" + e.getMessage());
                 }
@@ -439,7 +438,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
             }
         }
         try {
-            updateData(articleEntity, uploadedFileNames);
+            articleEntity.setContent(content);
+            articleEntity.setSuggest(article.getSuggest());
+            articleEntity.setIsShow(article.getIsShow());
+            articleEntity.setTitle(article.getTitle());
+            articleEntity.setType(article.getType());
+            List<String> result = Stream.concat(uploadedFileNames.stream(), imgPaths.stream())
+                    .collect(Collectors.toList());
+            updateData(articleEntity, result);
             return Result.success("文章及图片保存成功");
         } catch (Exception e) {
             rollbackUploadedFiles(uploadPath, uploadedFileNames);
@@ -448,7 +454,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
     }
 
     private void updateData(ArticleEntity articleEntity, List<String> uploadedFileNames) {
-
+        System.out.println("uploadedFileNames: " + uploadedFileNames);
         // 设置时间戳
         long date = System.currentTimeMillis() / 1000;
         articleEntity.setUpdated(date);
@@ -461,7 +467,11 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
             content = replaceImageLinks(content, uploadedFileNames);
             articleEntity.setContent(content);
         }
-
+        articleEntity.setImg1(null);
+        articleEntity.setImg2(null);
+        articleEntity.setImg3(null);
+        articleEntity.setImg4(null);
+        articleEntity.setImg5(null);
         // 检查 img1 到 img5 是否有空位，并分配新图片
         List<String> imgFields = Arrays.asList(
                 articleEntity.getImg1(),
@@ -510,28 +520,15 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
                 throw new RuntimeException("图片数量已达到上限，不能超过五张");
             }
         }
-
         // 保存或更新数据
+        System.out.println(articleEntity.getIsShow());
+        System.out.println(articleEntity.getSuggest());
+
         boolean success = this.saveOrUpdate(articleEntity, new QueryWrapper<ArticleEntity>().eq("ID", articleEntity.getId()));
         if (!success) {
             throw new RuntimeException("文章数据保存失败");
         }
     }
 
-    private void updateArticleImageFields(ArticleEntity articleEntity, String oldPath) {
-        if (oldPath.equals(articleEntity.getImg1())) {
-            articleEntity.setImg1(null);
-        } else if (oldPath.equals(articleEntity.getImg2())) {
-            articleEntity.setImg2(null);
-        } else if (oldPath.equals(articleEntity.getImg3())) {
-            articleEntity.setImg3(null);
-        } else if (oldPath.equals(articleEntity.getImg4())) {
-            articleEntity.setImg4(null);
-        } else if (oldPath.equals(articleEntity.getImg5())) {
-            articleEntity.setImg5(null);
-        }
 
-        // 保存更新后的实体到数据库
-        this.updateById(articleEntity);
-    }
 }

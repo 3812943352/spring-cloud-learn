@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-12 16:53:42
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-13 16:25:41
+ * @LastEditTime: 2025-03-26 09:20:01
  * @FilePath: ApiSupervision-service/src/main/java/org/learning/apisupervisionservice/service/impl/ApiServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -453,7 +453,53 @@ public class ApiServiceImpl extends ServiceImpl<ApiMapper, ApiEntity> implements
 
     @Override
     public Result<?> deleteApi(ApiEntity apiEntity) {
-        return Result.success(this.removeById(apiEntity));
+        // 1. 根据 ID 查询要删除的 API 实体
+        ApiEntity api = this.getOne(new QueryWrapper<ApiEntity>().eq("id", apiEntity.getId()));
+        if (api == null) {
+            return Result.failure("API不存在，无法删除");
+        }
+
+        String apiPath = api.getApi();
+
+        try {
+            // 2. 删除 Redis 中的对应 API 路径
+            removeApiFromRedisList("authList", apiPath);
+            removeApiFromRedisList("loginList", apiPath);
+
+            // 3. 删除数据库中的记录
+            boolean isDeleted = this.removeById(apiEntity.getId());
+            if (!isDeleted) {
+                return Result.failure("API删除失败");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("删除API时发生错误", e);
+        }
+
+        // 返回删除成功的结果
+        return Result.success("API删除成功");
+    }
+
+    /**
+     * 从 Redis 列表中移除指定的 API 路径
+     *
+     * @param redisKey Redis 列表的键
+     * @param apiPath  要移除的 API 路径
+     */
+    private void removeApiFromRedisList(String redisKey, String apiPath) {
+        // 获取 Redis 列表的所有元素
+        List<Object> apiList = redisTemplate.opsForList().range(redisKey, 0, -1);
+        if (apiList != null && !apiList.isEmpty()) {
+            // 过滤掉要删除的 API 路径
+            List<Object> updatedList = apiList.stream()
+                    .filter(api -> !api.toString().equals(apiPath))
+                    .collect(Collectors.toList());
+
+            // 清空原列表并重新插入过滤后的数据
+            redisTemplate.delete(redisKey);
+            if (!updatedList.isEmpty()) {
+                redisTemplate.opsForList().rightPushAll(redisKey, updatedList);
+            }
+        }
     }
 
     @Override

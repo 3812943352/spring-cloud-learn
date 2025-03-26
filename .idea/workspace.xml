@@ -5,25 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ef73ac2-f4fa-4f6c-8343-eeaa802dab43" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ATypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ATypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiSupervision-service/src/main/java/org/learning/apisupervisionservice/service/impl/ApiServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ApiSupervision-service/src/main/java/org/learning/apisupervisionservice/service/impl/ApiServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ACommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/ACommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/LikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/LikeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/controller/SettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/ACommentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/ACommentEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/ArticleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/ArticleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ATypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ATypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/CollectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/CollectionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/LikeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/LikeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/SettingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/entity/SettingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ACommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/ACommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/CollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/LikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/LikeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/SettingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ACommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ACommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ATypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ATypeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/CollectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/CollectionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/LikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/LikeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/SettingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/java/org/learning/contentsservice/service/impl/SettingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/ACommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/ACommentMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/CourseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/entity/CourseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/CTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/CTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CTypeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/SettingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contents-service/src/main/resources/mapper/SettingMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Alan_Tang_Kwong-wing_0002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Alan_Tang_Kwong-wing_0004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Alan_Trammell_0001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Alexander_Downer_0001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Alexander_Losyukov_0001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Alexandre_Herchcovitch_0002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Andrew_Firestone_0001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Andrew_Firestone_0002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Antonio_Palocci_0003.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Anwar_Ibrahim_0001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Anwar_Ibrahim_0004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/George_P_Bush_0001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/George_Ryan_0003.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/George_Tenet_0002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contents/Gerald_Barbarito_0002.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-service/src/main/resources/mapper/CourseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/course-service/src/main/resources/mapper/CourseMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/video-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +157,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\IntelliJ IDEA 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
     &quot;应用程序.GeneratorMySQL.executor&quot;: &quot;Run&quot;,
@@ -173,11 +194,11 @@
       <recent name="D:\develop\project\learning_platform\spring-cloud-learning\order-service\src\main\resources\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.learning.apisupervisionservice.config" />
       <recent name="org.learning.videoservice.config" />
       <recent name="org.learning.videoservice.service.impl" />
       <recent name="org.learning.gatewayservice.mapper" />
       <recent name="org.learning.gatewayservice.entity" />
-      <recent name="org.learning.gatewayservice.service.impl" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -343,6 +364,9 @@
       <workItem from="1742810231773" duration="7637000" />
       <workItem from="1742862830571" duration="6342000" />
       <workItem from="1742872481870" duration="16372000" />
+      <workItem from="1742898001561" duration="3134000" />
+      <workItem from="1742901177559" duration="6311000" />
+      <workItem from="1742949856445" duration="15399000" />
     </task>
     <servers />
   </component>

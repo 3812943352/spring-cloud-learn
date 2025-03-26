@@ -9,11 +9,14 @@
         <result column="user" property="user"/>
         <result column="article" property="article"/>
         <result column="created" property="created"/>
+        <result column="isShow" property="isShow"/>
+
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, content, user, article, created
+        ID, content, user, article, created,isShow
     </sql>
 
 </mapper>

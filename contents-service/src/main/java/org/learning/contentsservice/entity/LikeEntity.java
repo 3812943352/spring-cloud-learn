@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:03:26
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 09:07:05
+ * @LastEditTime: 2025-03-26 13:57:00
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/entity/LikeEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -32,7 +32,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-@TableName("like")
+@TableName("likes")
 @Schema(name = "LikeEntity", description = "$!{table.comment}")
 public class LikeEntity extends Model<LikeEntity> {
 
@@ -42,11 +42,11 @@ public class LikeEntity extends Model<LikeEntity> {
 
     @Schema(description = "点赞人ID")
     @TableField("user")
-    private Integer user;
+    private String user;
 
     @Schema(description = "点赞文章ID")
     @TableField("article")
-    private Integer article;
+    private String article;
 
     @Schema(description = "点赞时间")
     @TableField("created")

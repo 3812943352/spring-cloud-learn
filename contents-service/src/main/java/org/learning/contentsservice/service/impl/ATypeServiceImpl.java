@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:36
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-24 16:14:03
+ * @LastEditTime: 2025-03-25 22:34:55
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/ATypeServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -31,12 +31,10 @@ import java.util.List;
  */
 @Service
 public class ATypeServiceImpl extends ServiceImpl<ATypeMapper, ATypeEntity> implements ATypeService {
-    private final ATypeMapper aTypeMapper;
     private final ArticleMapper articleMapper;
 
 
-    public ATypeServiceImpl(ATypeMapper aTypeMapper, ArticleMapper articleMapper) {
-        this.aTypeMapper = aTypeMapper;
+    public ATypeServiceImpl(ArticleMapper articleMapper) {
         this.articleMapper = articleMapper;
     }
 

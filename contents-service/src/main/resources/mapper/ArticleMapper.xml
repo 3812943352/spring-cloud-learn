@@ -20,11 +20,13 @@
         <result column="img4" property="img4"/>
         <result column="img5" property="img5"/>
         <result column="isShow" property="isShow"/>
+        <result column="suggest" property="suggest"/>
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, type, visit, collection, likes, comment, created, updated, content, title,img1,img2,img3,img4,img5,isShow
+        ID, type, visit, collection, likes, comment, created, updated, content, title,img1,img2,img3,img4,img5,isShow,suggest
     </sql>
 
 </mapper>

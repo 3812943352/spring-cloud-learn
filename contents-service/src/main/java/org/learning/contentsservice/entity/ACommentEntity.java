@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:17
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 09:07:03
+ * @LastEditTime: 2025-03-26 11:02:00
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/entity/ACommentEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -46,15 +46,19 @@ public class ACommentEntity extends Model<ACommentEntity> {
 
     @Schema(description = "评论人")
     @TableField("user")
-    private Integer user;
+    private String user;
 
-    @Schema(description = "评论文章ID")
+    @Schema(description = "评论文章")
     @TableField("article")
-    private Integer article;
+    private String article;
 
     @Schema(description = "评论时间")
     @TableField("created")
-    private Integer created;
+    private Long created;
+
+    @Schema(description = "是否显示")
+    @TableField("isShow")
+    private Integer isShow;
 
     @Override
     public Serializable pkVal() {

@@ -4,6 +4,7 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="org.learning.contentsservice.entity.SettingEntity">
+        <id column="ID" property="id"/>
         <result column="img1" property="img1"/>
         <result column="img2" property="img2"/>
         <result column="img3" property="img3"/>
@@ -13,7 +14,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        img1, img2, img3, img4, img5
+        ID,img1, img2, img3, img4, img5
     </sql>
 
 </mapper>

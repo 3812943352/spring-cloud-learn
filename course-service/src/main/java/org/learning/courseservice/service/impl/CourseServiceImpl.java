@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-25 12:11:14
+ * @LastEditTime: 2025-03-26 14:39:27
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -75,7 +75,6 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseEntity> i
         if (Files.exists(targetLocation)) {
             return Result.failure(202, "文件已存在: " + name);
         }
-        System.out.println("Upload Directory: " + targetLocation);
         try (InputStream inputStream = file.getInputStream()) {
             // 将输入流中的数据复制到目标位置
             Files.copy(inputStream, targetLocation, StandardCopyOption.REPLACE_EXISTING);

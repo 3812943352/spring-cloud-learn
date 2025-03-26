@@ -2,13 +2,15 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 15:58:06
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 15:58:40
+ * @LastEditTime: 2025-03-26 14:15:52
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/entity/SettingEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
 package org.learning.contentsservice.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
@@ -33,6 +35,9 @@ import lombok.experimental.Accessors;
 @TableName("setting")
 @Schema(name = "SettingEntity", description = "$!{table.comment}")
 public class SettingEntity extends Model<SettingEntity> {
+    @Schema(description = "配置ID")
+    @TableId(value = "ID", type = IdType.AUTO)
+    private Integer id;
 
     @Schema(description = "首页轮播图1路径")
     @TableField("img1")
