@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 15:56:22
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-26 17:02:45
+ * @LastEditTime: 2025-03-26 21:42:50
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/SettingServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -88,6 +88,8 @@ public class SettingServiceImpl extends ServiceImpl<SettingMapper, SettingEntity
         String projectRoot = System.getProperty("user.dir");
         String fullUploadDir = projectRoot + "/" + this.contentDir + "/setting";
         Path uploadPath = Paths.get(fullUploadDir);
+        System.out.println(fullUploadDir);
+
         Path filePath = uploadPath.resolve(fileName);
         try {
             Files.deleteIfExists(filePath);
@@ -100,6 +102,7 @@ public class SettingServiceImpl extends ServiceImpl<SettingMapper, SettingEntity
     public void saveFile(MultipartFile file, String name) {
         String projectRoot = System.getProperty("user.dir");
         String fullUploadDir = projectRoot + "/" + this.contentDir + "/setting";
+        System.out.println(fullUploadDir);
         Path uploadPath = Paths.get(fullUploadDir);
         if (!Files.exists(uploadPath)) {
             try {
@@ -143,12 +146,12 @@ public class SettingServiceImpl extends ServiceImpl<SettingMapper, SettingEntity
     }
 
     public void saveData(SettingEntity settingEntity) {
-        this.saveOrUpdate(settingEntity, new QueryWrapper<SettingEntity>().eq("ID", 1));
+        this.saveOrUpdate(settingEntity, new QueryWrapper<SettingEntity>().eq("id", 1));
     }
 
     @Override
     public Result<?> get(int id) {
-        SettingEntity settingEntity = this.getOne(new QueryWrapper<SettingEntity>().eq("ID", id));
+        SettingEntity settingEntity = this.getOne(new QueryWrapper<SettingEntity>().eq("id", id));
         return Result.success(settingEntity);
     }
 }

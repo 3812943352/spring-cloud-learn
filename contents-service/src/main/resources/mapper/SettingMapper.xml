@@ -14,7 +14,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID,img1, img2, img3, img4, img5
+        ID, img1, img2, img3, img4, img5
     </sql>
 
 </mapper>

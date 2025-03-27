@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-25 14:40:14
+ * @LastEditTime: 2025-03-27 13:35:49
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/controller/ArticleController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -87,5 +87,11 @@ public class ArticleController {
                                  @RequestParam("start") long startTime,
                                  @RequestParam("end") long endTime) {
         return this.articleService.date(pageNum, pageSize, startTime, endTime);
+    }
+
+    @Operation(summary = "文章类型列表")
+    @PostMapping(value = "/listArticle")
+    public Result<?> listArticle(int type) {
+        return this.articleService.listArticle(type);
     }
 }

@@ -8,11 +8,15 @@
         <result column="name" property="name"/>
         <result column="cv" property="cv"/>
         <result column="des" property="des"/>
+        <result column="art" property="art"/>
+        <result column="img" property="img"/>
+        <result column="created" property="created"/>
+        <result column="updated" property="updated"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, name, cv, des
+        ID, name, cv, des,art,img,created,updated
     </sql>
 
 </mapper>

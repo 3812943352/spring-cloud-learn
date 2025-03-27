@@ -8,14 +8,12 @@
         <result column="name" property="name"/>
         <result column="content" property="content"/>
         <result column="issure" property="issure"/>
-        <result column="people" property="people"/>
-        <result column="condition" property="condition"/>
         <result column="path" property="path"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, name, content, issure, people, condition, path
+        ID, name, content, issure, path
     </sql>
 
 </mapper>

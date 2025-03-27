@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:38:36
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 16:38:58
+ * @LastEditTime: 2025-03-27 20:34:16
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/TemplateEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -52,13 +52,6 @@ public class TemplateEntity extends Model<TemplateEntity> {
     @TableField("issure")
     private String issure;
 
-    @Schema(description = "颁发人员")
-    @TableField("people")
-    private String people;
-
-    @Schema(description = "颁发条件")
-    @TableField("condition")
-    private String condition;
 
     @Schema(description = "证书背景图片路径")
     @TableField("path")

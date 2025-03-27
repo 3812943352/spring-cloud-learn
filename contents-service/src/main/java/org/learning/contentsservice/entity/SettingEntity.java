@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 15:58:06
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-26 14:15:52
+ * @LastEditTime: 2025-03-26 21:34:51
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/entity/SettingEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -61,6 +61,6 @@ public class SettingEntity extends Model<SettingEntity> {
 
     @Override
     public Serializable pkVal() {
-        return null;
+        return this.id;
     }
 }

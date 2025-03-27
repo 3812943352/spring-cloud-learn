@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 15:19:51
+ * @LastEditTime: 2025-03-27 10:43:24
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/ExpertEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -50,6 +50,22 @@ public class ExpertEntity extends Model<ExpertEntity> {
     @Schema(description = "专家描述")
     @TableField("des")
     private String des;
+
+    @Schema(description = "专家详情文章ID")
+    @TableField("art")
+    private Integer art;
+
+    @Schema(description = "专家照片")
+    @TableField("img")
+    private String img;
+
+    @Schema(description = "创建时间")
+    @TableField("created")
+    private Long created;
+
+    @Schema(description = "更新时间")
+    @TableField("updated")
+    private Long updated;
 
     @Override
     public Serializable pkVal() {
