@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 15:56:22
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-26 21:42:50
+ * @LastEditTime: 2025-03-30 13:20:48
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/SettingServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -42,7 +42,7 @@ public class SettingServiceImpl extends ServiceImpl<SettingMapper, SettingEntity
     @Override
     public Result<?> updateSetting(MultipartFile img1, MultipartFile img2,
                                    MultipartFile img3, MultipartFile img4,
-                                   MultipartFile img5) {
+                                   MultipartFile img5, String phone, String email, String num, String cr) {
         SettingEntity settingEntity = this.getOne(new QueryWrapper<SettingEntity>().eq("id", 1));
         try {
             if (img1 != null && !img1.isEmpty()) {
@@ -75,6 +75,10 @@ public class SettingServiceImpl extends ServiceImpl<SettingMapper, SettingEntity
                 this.delFile(settingEntity.getImg5());
                 this.saveFile(img5, img5Name);
             }
+            settingEntity.setPhone(phone);
+            settingEntity.setEmail(email);
+            settingEntity.setNum(num);
+            settingEntity.setCr(cr);
             this.saveData(settingEntity);
             return Result.success("更新成功");
         } catch (Exception e) {

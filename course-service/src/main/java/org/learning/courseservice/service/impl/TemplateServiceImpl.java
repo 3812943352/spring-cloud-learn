@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:38:10
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 21:08:36
+ * @LastEditTime: 2025-03-28 14:35:46
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/TemplateServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -28,6 +28,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -199,5 +203,18 @@ public class TemplateServiceImpl extends ServiceImpl<TemplateMapper, TemplateEnt
         }
         resultPage = this.page(resultPage, queryWrapper);
         return Result.success(resultPage, "请求成功");
+    }
+
+    @Override
+    public Result<?> listTem() {
+        List<TemplateEntity> list = this.list(new QueryWrapper<TemplateEntity>().select("ID", "name"));
+        List<Map<String, Object>> formattedList = new ArrayList<>();
+        for (TemplateEntity tem : list) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("value", tem.getId());
+            map.put("label", tem.getName());
+            formattedList.add(map);
+        }
+        return Result.success(formattedList);
     }
 }

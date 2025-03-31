@@ -18,12 +18,14 @@
         <result column="paper" property="paper"/>
         <result column="video" property="video" jdbcType="VARCHAR"
                 typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result column="tem" property="tem"/>
+        <result column="isShow" property="isShow"/>
 
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, price, des,name, created, updated, cover, type, likeNum, col, commentNum, paper, video
+        ID, price, des,name, created, updated, cover, type, likeNum, col, commentNum, paper, video,tem,isShow
     </sql>
 
 </mapper>

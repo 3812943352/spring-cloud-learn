@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:38:17
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 20:38:23
+ * @LastEditTime: 2025-03-28 14:45:45
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/TemplateService.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -34,4 +34,6 @@ public interface TemplateService extends IService<TemplateEntity> {
     Result<?> del(int iD);
 
     Result<?> blur(int pageNum, int pageSize, String word);
+
+    Result<?> listTem();
 }

@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 13:35:49
+ * @LastEditTime: 2025-03-31 20:23:22
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/ArticleService.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -29,6 +29,10 @@ public interface ArticleService extends IService<ArticleEntity> {
 
     Result<?> getArticle(int pageNum, int pageSize);
 
+    Result<?> getArtById(int id);
+
+    Result<?> getArtByType(int pageNum, int pageSize, int type);
+
     Result<?> blur(int pageNum, int pageSize, String word);
 
     Result<?> date(int pageNum, int pageSize, long startTime, long endTime);
@@ -40,4 +44,12 @@ public interface ArticleService extends IService<ArticleEntity> {
                      MultipartFile img5, ArticleEntity articleEntity);
 
     Result<?> listArticle(int type);
+
+    Result<?> newPub();
+
+    Result<?> homeArt();
+
+    Result<?> homeArt1();
+
+    Result<?> homeArt2();
 }

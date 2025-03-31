@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-18 09:52:06
+ * @LastEditTime: 2025-03-29 16:33:14
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/CourseController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -114,6 +114,13 @@ public class CourseController {
     @PostMapping(value = "/listCourse")
     public Result<?> listCourse() {
         return this.courseService.listCourse();
+    }
+
+
+    @Operation(summary = "首页显示课程")
+    @PostMapping(value = "/userHome")
+    public Result<?> userHome() {
+        return this.courseService.userHome();
     }
 
     public boolean validFile(MultipartFile file) {

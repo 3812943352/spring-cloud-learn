@@ -10,11 +10,15 @@
         <result column="img3" property="img3"/>
         <result column="img4" property="img4"/>
         <result column="img5" property="img5"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="num" property="num"/>
+        <result column="cr" property="cr"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, img1, img2, img3, img4, img5
+        ID, img1, img2, img3, img4, img5,phone,email,num,cr
     </sql>
 
 </mapper>

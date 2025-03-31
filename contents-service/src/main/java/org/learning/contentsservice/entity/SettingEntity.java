@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 15:58:06
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-26 21:34:51
+ * @LastEditTime: 2025-03-30 13:00:26
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/entity/SettingEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -58,6 +58,22 @@ public class SettingEntity extends Model<SettingEntity> {
     @Schema(description = "首页轮播图5路径")
     @TableField("img5")
     private String img5;
+
+    @Schema(description = "举报电话")
+    @TableField("phone")
+    private String phone;
+
+    @Schema(description = "举报邮箱")
+    @TableField("email")
+    private String email;
+
+    @Schema(description = "备案号")
+    @TableField("num")
+    private String num;
+
+    @Schema(description = "版权")
+    @TableField("cr")
+    private String cr;
 
     @Override
     public Serializable pkVal() {

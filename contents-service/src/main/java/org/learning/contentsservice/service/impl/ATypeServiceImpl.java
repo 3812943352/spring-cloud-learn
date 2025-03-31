@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:36
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-25 22:34:55
+ * @LastEditTime: 2025-03-29 13:45:41
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/ATypeServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -55,7 +55,7 @@ public class ATypeServiceImpl extends ServiceImpl<ATypeMapper, ATypeEntity> impl
         if (aTypeEntity.getType() == null) {
             return Result.failure("文章类别不能为空");
         }
-        if (this.getOne(new QueryWrapper<ATypeEntity>().eq("type", aTypeEntity.getType())) == null) {
+        if (this.getOne(new QueryWrapper<ATypeEntity>().eq("id", aTypeEntity.getId())) == null) {
             return Result.failure("文章类别不存在");
         }
         this.updateById(aTypeEntity);

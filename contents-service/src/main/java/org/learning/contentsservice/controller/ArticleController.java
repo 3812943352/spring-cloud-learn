@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 13:35:49
+ * @LastEditTime: 2025-03-31 20:25:38
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/controller/ArticleController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -71,6 +71,20 @@ public class ArticleController {
         return this.articleService.getArticle(pageNum, pageSize);
     }
 
+    @Operation(summary = "ID获取文章")
+    @PostMapping(value = "/getArtById")
+    public Result<?> getArtByType(
+            @RequestParam("id") int id) {
+        return this.articleService.getArtById(id);
+    }
+
+    @Operation(summary = "类型获取文章")
+    @PostMapping(value = "/getArtByType")
+    public Result<?> getArtByType(@RequestParam("pageNum") int pageNum,
+                                  @RequestParam("pageSize") int pageSize,
+                                  @RequestParam("type") int type) {
+        return this.articleService.getArtByType(pageNum, pageSize, type);
+    }
 
     @Operation(summary = "文章模糊")
     @PostMapping(value = "/blurArticle")
@@ -93,5 +107,43 @@ public class ArticleController {
     @PostMapping(value = "/listArticle")
     public Result<?> listArticle(int type) {
         return this.articleService.listArticle(type);
+    }
+
+
+    /**
+     * 用户首页最新公告接口
+     */
+    @Operation(summary = "首页最新公告")
+    @PostMapping(value = "/newPub")
+    public Result<?> newPub() {
+        return this.articleService.newPub();
+    }
+
+    /**
+     * 用户首页公告和政策法规
+     */
+    @Operation(summary = "首页文章")
+    @PostMapping(value = "/homeArt")
+    public Result<?> homeArt() {
+        return this.articleService.homeArt();
+    }
+
+
+    /**
+     * 用户首页公告和政策法规
+     */
+    @Operation(summary = "首页文章")
+    @PostMapping(value = "/homeArt1")
+    public Result<?> homeArt1() {
+        return this.articleService.homeArt1();
+    }
+
+    /**
+     * 用户首页公告和政策法规
+     */
+    @Operation(summary = "首页文章")
+    @PostMapping(value = "/homeArt2")
+    public Result<?> homeArt2() {
+        return this.articleService.homeArt2();
     }
 }

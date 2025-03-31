@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:38:27
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 21:08:37
+ * @LastEditTime: 2025-03-28 14:45:45
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/TemplateController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -102,6 +102,12 @@ public class TemplateController {
                                 @RequestParam(value = "pageSize", defaultValue = "5") int pageSize,
                                 @RequestParam("word") String word) {
         return this.templateService.blur(pageNum, pageSize, word);
+    }
+
+    @Operation(summary = "模版列表")
+    @PostMapping(value = "/listTemplate")
+    public Result<?> listTemplate() {
+        return Result.success(this.templateService.listTem());
     }
 
 

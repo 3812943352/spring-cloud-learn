@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 09:50:02
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-13 11:38:58
+ * @LastEditTime: 2025-03-31 13:11:32
  * @FilePath: user-service/src/main/java/org/learning/userservice/service/impl/UserServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -15,7 +15,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.common.commonmodule.resp.Result;
 import com.common.commonmodule.util.JwtUtil;
 import com.common.commonmodule.util.SizeFormatter;
-import org.learning.userservice.entity.AuthEntity;
 import org.learning.userservice.entity.UserEntity;
 import org.learning.userservice.mapper.AuthMapper;
 import org.learning.userservice.mapper.UserMapper;
@@ -261,39 +260,60 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
 
     @Override
     public Result<?> updateUser(UserEntity userEntity) {
-        int ID = userEntity.getId();
-        UserEntity user = this.userMapper.selectById(ID);
-        if (user != null) {
-            int result = this.userMapper.updateById(userEntity);
-            if (result > 0) {
-                return Result.success(String.format("更改ID：%d的用户成功", ID));
-            } else {
-                return Result.failure(202, String.format("更改ID：%d的用户失败", ID));
-            }
-        } else {
-            return Result.failure(202, String.format("ID：%d的用户不存在", ID));
+        System.out.println(userEntity.getId());
+        System.out.println(userEntity.getUsername());
+        UserEntity user = this.getOne(new QueryWrapper<UserEntity>().eq("id", userEntity.getId()));
+        if (user == null) {
+            return Result.failure("用户不存在");
+        }
+        try {
+            this.saveOrUpdate(userEntity, new QueryWrapper<UserEntity>().eq("id", userEntity.getId()));
+            return Result.success("更新成功");
+        } catch (Exception e) {
+            return Result.failure(String.valueOf(userEntity));
         }
     }
 
     @Override
-    public Result<?> resetPwd(String phone, String pwd) {
-        UserEntity user = this.getUserByPhone(phone);
-        QueryWrapper<UserEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("phone", user.getPhone());
-        UserEntity existingUser = this.getOne(queryWrapper);
-        if (existingUser == null) {
-            throw new RuntimeException("手机号不存在，请先注册");
+    public Result<?> resetPwd(String phone, String pwd, String oldPwd) {
+        UserEntity user = this.getOne(new QueryWrapper<UserEntity>().eq("phone", phone));
+        if (user == null) {
+            return Result.failure("手机号不存在，请先注册");
         }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
+        if (!bCryptPasswordEncoder.matches(oldPwd, user.getPwd())) {
+            return Result.failure("旧密码错误");
+        }
         // 加密密码
         String encodedPassword = bCryptPasswordEncoder.encode(pwd);
         user.setPwd(encodedPassword);
-
-
         // 保存用户
-        this.saveOrUpdate(user);
+        this.saveOrUpdate(user, new QueryWrapper<UserEntity>().eq("phone", phone));
         return Result.success("修改成功请返回登录");
+    }
+
+    @Override
+    public Result<?> resetPhone(String oldPhone, String newPhone, String pwd) {
+        UserEntity user = this.getOne(new QueryWrapper<UserEntity>().eq("phone", oldPhone));
+        UserEntity user1 = this.getOne(new QueryWrapper<UserEntity>().eq("phone", newPhone));
+
+        if (user == null) {
+
+            return Result.failure("手机号不存在");
+        }
+        if (user1 != null) {
+            return Result.failure("要修改的手机号已存在");
+        }
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+        if (!bCryptPasswordEncoder.matches(pwd, user.getPwd())) {
+            return Result.failure("密码错误");
+        }
+        user.setPhone(newPhone);
+        this.saveOrUpdate(user, new QueryWrapper<UserEntity>().eq("phone", oldPhone));
+        return Result.success("修改成功请返回登录");
+
     }
 
     /**
@@ -310,6 +330,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         int id = user.getId();
         result.put("outh", outh);
         result.put("id", id);
+        result.put("sex", user.getSex());
+        result.put("phone", user.getPhone());
         long date = System.currentTimeMillis() / 1000;
         user.setLastLogin(date);
         this.updateById(user);
@@ -320,6 +342,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
 //        将token存入redis
             this.redisTemplate.opsForValue().set(token, userId, this.redisTimeout, TimeUnit.HOURS);
             result.put("token", token);
+
             return Result.success(result, "登录成功！即将跳转...");
         } else {
             return Result.failure(202, "权限不足");

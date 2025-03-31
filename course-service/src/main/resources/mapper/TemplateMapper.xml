@@ -9,6 +9,7 @@
         <result column="content" property="content"/>
         <result column="issure" property="issure"/>
         <result column="path" property="path"/>
+
     </resultMap>
 
     <!-- 通用查询结果列 -->

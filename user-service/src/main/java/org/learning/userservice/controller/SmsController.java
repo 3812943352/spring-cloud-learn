@@ -2,7 +2,7 @@
  * @Author: wangbo 3812943352@qq.com
  * @Date: 2024-11-13 18:49:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-16 16:06:13
+ * @LastEditTime: 2025-03-30 19:50:13
  * @FilePath: user-service/src/main/java/org/learning/userservice/controller/SmsController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -49,10 +49,14 @@ public class SmsController {
                              @RequestParam("captcha") String userInput
     ) {
         UserEntity user = this.userService.getUserByPhone(phone);
+        if (user == null) {
+            return this.smsService.sendSms(phone);
+        }
         String outh = user.getAuth();
         if (!outh.equals("管理")) {
             return Result.failure(201, "发送失败，请检查手机号或权限");
         }
+
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         if (bCryptPasswordEncoder.matches(pwd, user.getPwd())) {
             Result<?> captchaValidationResult = this.validateCaptcha(captchaKey, userInput);

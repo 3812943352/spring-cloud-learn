@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 13:35:49
+ * @LastEditTime: 2025-03-31 20:32:03
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/ArticleServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -244,6 +244,30 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
         try {
             Page<ArticleEntity> resultPage = new Page<>(pageNum, pageSize);
             QueryWrapper<ArticleEntity> queryWrapper = new QueryWrapper<>();
+            resultPage = this.page(resultPage, queryWrapper);
+            return Result.success(resultPage);
+        } catch (Exception e) {
+            return Result.failure(202, "查询失败" + e);
+        }
+    }
+
+    @Override
+    public Result<?> getArtById(int id) {
+        ArticleEntity articleEntity = this.getOne(new QueryWrapper<ArticleEntity>().eq("id", id));
+        if (articleEntity == null) {
+            return Result.failure("该文章不存在");
+        }
+        articleEntity.setVisit(articleEntity.getVisit() + 1);
+        this.updateById(articleEntity);
+
+        return Result.success(articleEntity);
+    }
+
+    @Override
+    public Result<?> getArtByType(int pageNum, int pageSize, int type) {
+        try {
+            Page<ArticleEntity> resultPage = new Page<>(pageNum, pageSize);
+            QueryWrapper<ArticleEntity> queryWrapper = new QueryWrapper<ArticleEntity>().eq("type", type);
             resultPage = this.page(resultPage, queryWrapper);
             return Result.success(resultPage);
         } catch (Exception e) {
@@ -534,5 +558,71 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
     public Result<?> listArticle(int type) {
         List<ArticleEntity> list = this.list(new QueryWrapper<ArticleEntity>().eq("type", type));
         return Result.success(list);
+    }
+
+
+    @Override
+    public Result<?> newPub() {
+        List<ArticleEntity> list = this.list(new QueryWrapper<ArticleEntity>()
+                .select("id", "title")
+                .eq("isShow", 1)
+                .eq("type", 10)
+                .orderByDesc("id")
+                .last("LIMIT 4")
+        );
+
+        return Result.success(list);
+    }
+
+    @Override
+    public Result<?> homeArt() {
+        List<ArticleEntity> list1 = this.list(new QueryWrapper<ArticleEntity>()
+                .select("id", "title", "created")
+                .eq("isShow", 1)
+                .eq("type", 10)
+
+        );
+        List<ArticleEntity> list2 = this.list(new QueryWrapper<ArticleEntity>()
+                .select("id", "title", "created")
+                .eq("isShow", 1)
+                .eq("type", 11)
+        );
+        List<List<ArticleEntity>> resultList = new ArrayList<>();
+        resultList.add(list1);
+        resultList.add(list2);
+
+        // 返回包含两个子列表的结果
+        return Result.success(resultList);
+    }
+
+    @Override
+    public Result<?> homeArt1() {
+        List<ArticleEntity> list = this.list(new QueryWrapper<ArticleEntity>()
+                .select("id", "title", "created", "img1")
+                .eq("isShow", 1)
+                .eq("type", 12)
+        );
+        List<List<ArticleEntity>> groupedData = new ArrayList<>();
+        int size = list.size();
+        for (int i = 0; i < size; i += 3) {
+            groupedData.add(list.subList(i, Math.min(i + 3, size)));
+        }
+        return Result.success(groupedData);
+    }
+
+    @Override
+    public Result<?> homeArt2() {
+        List<ArticleEntity> list = this.list(new QueryWrapper<ArticleEntity>()
+                .select("id", "title", "created", "img1")
+                .eq("isShow", 1)
+                .eq("type", 13)
+        );
+        List<List<ArticleEntity>> groupedData = new ArrayList<>();
+        int size = list.size();
+        for (int i = 0; i < size; i += 3) {
+            groupedData.add(list.subList(i, Math.min(i + 3, size)));
+        }
+
+        return Result.success(groupedData);
     }
 }

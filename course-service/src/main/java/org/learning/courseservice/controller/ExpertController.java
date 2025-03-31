@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 11:10:34
+ * @LastEditTime: 2025-03-29 19:33:16
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/ExpertController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -113,6 +113,11 @@ public class ExpertController {
         return this.expertService.date(pageNum, pageSize, startTime, endTime);
     }
 
+    @Operation(summary = "首页专家列表")
+    @PostMapping(value = "/listEx")
+    public Result<?> list() {
+        return this.expertService.listEx();
+    }
 
     public boolean validFile(MultipartFile file) {
 

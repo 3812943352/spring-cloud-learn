@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 11:10:35
+ * @LastEditTime: 2025-03-29 19:28:48
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/ExpertService.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -36,6 +36,8 @@ public interface ExpertService extends IService<ExpertEntity> {
     Result<?> del(int iD);
 
     Result<?> blur(int pageNum, int pageSize, String word);
+
+    Result<?> listEx();
 
     Result<?> date(int pageNum, int pageSize, long startTime, long endTime);
 }

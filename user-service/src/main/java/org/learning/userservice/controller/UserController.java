@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 09:50:28
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-13 10:00:18
+ * @LastEditTime: 2025-03-31 12:36:58
  * @FilePath: user-service/src/main/java/org/learning/userservice/controller/UserController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -75,16 +75,15 @@ public class UserController {
     @Operation(summary = "用户注册")
     @PostMapping(value = "/register")
     public Result<?> register(@Valid @RequestBody UserEntity userEntity, BindingResult bindingResult,
-                              @RequestHeader("captcha-Key") String captchaKey,
-                              @RequestParam("captcha") String userInput
+                              @RequestParam("smsCode") String userInput
     ) {
         Result<?> validationResult = this.validate(bindingResult);
         if (validationResult != null) {
             return validationResult;
         }
-        Result<?> captchaValidationResult = this.validateCaptcha(captchaKey, userInput);
-        if (captchaValidationResult != null) {
-            return captchaValidationResult;
+        Result<?> smsValidationResult = this.validateSms(userEntity.getPhone(), userInput);
+        if (smsValidationResult != null) {
+            return smsValidationResult;
         }
         // 调用服务层的方法进行注册逻辑处理
         return this.userService.register(userEntity);
@@ -93,7 +92,9 @@ public class UserController {
     @Operation(summary = "修改密码")
     @PostMapping(value = "/reset")
     public Result<?> reset(@Valid @RequestParam("phone") @ValidPhone String phone,
-                           @Valid @RequestParam("pwd") @ValidPassword() String pwd,
+                           @Valid @RequestParam("newPwd") @ValidPassword() String pwd,
+                           @Valid @RequestParam("oldPwd") @ValidPassword() String oldPwd,
+
                            @RequestParam("smsCode") String userInput
     ) {
         Result<?> smsValidationResult = this.validateSms(phone, userInput);
@@ -101,7 +102,20 @@ public class UserController {
             return smsValidationResult;
         }
         // 调用服务层的方法进行注册逻辑处理
-        return this.userService.resetPwd(phone, pwd);
+        return this.userService.resetPwd(phone, pwd, oldPwd);
+    }
+
+    @Operation(summary = "修改手机号")
+    @PostMapping(value = "/resetPhone")
+    public Result<?> resetPhone(@Valid @RequestParam("oldPhone") @ValidPhone String oldPhone,
+                                @Valid @RequestParam("newPhone") @ValidPhone String newPhone,
+                                @Valid @RequestParam("pwd") @ValidPassword() String pwd,
+                                @Valid @RequestParam("smsCode") String userInput) {
+        Result<?> smsValidationResult = this.validateSms(oldPhone, userInput);
+        if (smsValidationResult != null) {
+            return smsValidationResult;
+        }
+        return this.userService.resetPhone(oldPhone, newPhone, pwd);
     }
 
     @Operation(summary = "模糊搜索")

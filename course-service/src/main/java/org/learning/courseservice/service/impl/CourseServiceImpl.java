@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-26 14:39:27
+ * @LastEditTime: 2025-03-29 16:32:13
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -255,4 +255,13 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseEntity> i
         return Result.success(formattedList);
     }
 
+
+    @Override
+    public Result<?> userHome() {
+        List<CourseEntity> list = this.list(new QueryWrapper<CourseEntity>()
+                .select("id", "name", "cover")
+                .eq("isShow", 1)
+        );
+        return Result.success(list);
+    }
 }

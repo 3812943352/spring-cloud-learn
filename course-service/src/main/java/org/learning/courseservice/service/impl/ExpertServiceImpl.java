@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-27 16:22:34
+ * @LastEditTime: 2025-03-30 10:45:44
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/ExpertServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -13,7 +13,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.common.commonmodule.resp.Result;
 import lombok.SneakyThrows;
-import org.learning.courseservice.entity.CourseEntity;
 import org.learning.courseservice.entity.ExpertEntity;
 import org.learning.courseservice.mapper.ExpertMapper;
 import org.learning.courseservice.service.ExpertService;
@@ -29,6 +28,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -207,6 +208,24 @@ public class ExpertServiceImpl extends ServiceImpl<ExpertMapper, ExpertEntity> i
         }
         resultPage = this.page(resultPage, queryWrapper);
         return Result.success(resultPage, "请求成功");
+    }
+
+    @Override
+    public Result<?> listEx() {
+        // 查询数据，只选择指定字段
+        List<ExpertEntity> list = this.list(new QueryWrapper<ExpertEntity>()
+                .select("name", "cv", "des", "img"));
+    
+        // 按四个一组分割数据
+        List<List<ExpertEntity>> groupedData = new ArrayList<>();
+        int size = list.size();
+        for (int i = 0; i < size; i += 3) {
+            // 每次取最多 4 个元素
+            groupedData.add(list.subList(i, Math.min(i + 3, size)));
+        }
+
+        // 返回分组后的数据
+        return Result.success(groupedData);
     }
 
     @Override
