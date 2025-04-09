@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:19
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-20 20:13:47
+ * @LastEditTime: 2025-04-07 02:06:20
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/TopicController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -10,10 +10,12 @@ package org.learning.courseservice.controller;
 
 import com.common.commonmodule.resp.Result;
 import io.swagger.v3.oas.annotations.Operation;
-import org.learning.courseservice.entity.TopicEntity;
+import org.learning.courseservice.entity.*;
 import org.learning.courseservice.service.TopicService;
 import org.learning.courseservice.service.impl.TopicServiceImpl;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -68,4 +70,15 @@ public class TopicController {
     ) {
         return topicService.blur(pageNum, pageSize, word, type);
     }
+
+
+    @Operation(summary = "阅卷")
+    @PostMapping(value = "/scoring")
+    public Result<?> scoring(@RequestBody AnswerEntity answerEntity, @RequestParam("course") int course, @RequestParam("phone") String phone, @RequestParam("user") int user) {
+        List<Radio> radioAnswer = answerEntity.getRadio();
+        List<Choice> choiceAnswer = answerEntity.getChoice();
+        List<Judge> judgeAnswer = answerEntity.getJudge();
+        return this.topicService.scoring(radioAnswer, choiceAnswer, judgeAnswer, course, phone, user);
+    }
+
 }

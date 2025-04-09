@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-31 20:25:38
+ * @LastEditTime: 2025-04-09 14:11:57
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/controller/ArticleController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -71,11 +71,28 @@ public class ArticleController {
         return this.articleService.getArticle(pageNum, pageSize);
     }
 
+    @Operation(summary = "文章模糊")
+    @PostMapping(value = "/blurArticle")
+    public Result<?> blurArticle(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize,
+                                 @RequestParam("word") String word) {
+        return this.articleService.blur(pageNum, pageSize, word);
+    }
+
+    @Operation(summary = "文章日期")
+    @PostMapping(value = "/dateArticle")
+    public Result<?> dateArticle(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                 @RequestParam(value = "pageSize", defaultValue = "5") int pageSize,
+                                 @RequestParam("start") long startTime,
+                                 @RequestParam("end") long endTime) {
+        return this.articleService.date(pageNum, pageSize, startTime, endTime);
+    }
+
+
     @Operation(summary = "ID获取文章")
     @PostMapping(value = "/getArtById")
     public Result<?> getArtByType(
-            @RequestParam("id") int id) {
-        return this.articleService.getArtById(id);
+            @RequestParam("id") int id, @RequestParam("userId") String userId) {
+        return this.articleService.getArtById(id, userId);
     }
 
     @Operation(summary = "类型获取文章")
@@ -86,22 +103,6 @@ public class ArticleController {
         return this.articleService.getArtByType(pageNum, pageSize, type);
     }
 
-    @Operation(summary = "文章模糊")
-    @PostMapping(value = "/blurArticle")
-    public Result<?> blurArticle(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize,
-                                 @RequestParam("word") String word) {
-        return this.articleService.blur(pageNum, pageSize, word);
-    }
-
-
-    @Operation(summary = "文章日期")
-    @PostMapping(value = "/dateArticle")
-    public Result<?> dateArticle(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-                                 @RequestParam(value = "pageSize", defaultValue = "5") int pageSize,
-                                 @RequestParam("start") long startTime,
-                                 @RequestParam("end") long endTime) {
-        return this.articleService.date(pageNum, pageSize, startTime, endTime);
-    }
 
     @Operation(summary = "文章类型列表")
     @PostMapping(value = "/listArticle")
@@ -145,5 +146,12 @@ public class ArticleController {
     @PostMapping(value = "/homeArt2")
     public Result<?> homeArt2() {
         return this.articleService.homeArt2();
+    }
+
+
+    @Operation(summary = "推荐阅读")
+    @PostMapping(value = "/suggest")
+    public Result<?> suggest(@RequestParam(value = "type") int type) {
+        return this.articleService.suggest(type);
     }
 }

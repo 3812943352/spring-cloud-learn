@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-30 10:45:44
+ * @LastEditTime: 2025-04-01 13:44:23
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/ExpertServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -123,13 +123,14 @@ public class ExpertServiceImpl extends ServiceImpl<ExpertMapper, ExpertEntity> i
                 return Result.failure(202, "无法创建目录: " + path);
             }
         }
+        int iD = expertEntity.getId();
+        System.out.println(expertEntity.getArt());
+
         if (file == null || file.isEmpty()) {
-            int iD = expertEntity.getId();
             this.saveOrUpdate(expertEntity, new QueryWrapper<ExpertEntity>().eq("ID", iD));
             String oriname = this.getOne(new QueryWrapper<ExpertEntity>().eq("ID", iD)).getName();
             return Result.success(oriname + "数据信息更新成功");
         }
-        int iD = expertEntity.getId();
         String oriName = this.getOne(new QueryWrapper<ExpertEntity>().eq("ID", iD)).getImg();
         Path targetLocation = path.resolve(oriName);
         Path newPath = path.resolve(name);
@@ -214,8 +215,8 @@ public class ExpertServiceImpl extends ServiceImpl<ExpertMapper, ExpertEntity> i
     public Result<?> listEx() {
         // 查询数据，只选择指定字段
         List<ExpertEntity> list = this.list(new QueryWrapper<ExpertEntity>()
-                .select("name", "cv", "des", "img"));
-    
+                .select("name", "cv", "des", "img", "art"));
+
         // 按四个一组分割数据
         List<List<ExpertEntity>> groupedData = new ArrayList<>();
         int size = list.size();

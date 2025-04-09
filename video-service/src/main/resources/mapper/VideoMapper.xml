@@ -12,11 +12,13 @@
         <result column="created" property="created"/>
         <result column="updated" property="updated"/>
         <result column="class_id" property="classId"/>
+        <result column="dur" property="dur"/>
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, title, des, content_path, uploader, created, updated, class_id
+        ID, title, des, content_path, uploader, created, updated, class_id,dur
     </sql>
 
 </mapper>

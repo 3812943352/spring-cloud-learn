@@ -7,16 +7,15 @@
         <id column="ID" property="id"/>
         <result column="user" property="user"/>
         <result column="paper" property="paper"/>
-        <result column="start" property="start"/>
+        <result column="created" property="created"/>
         <result column="scores" property="scores"/>
-        <result column="options" property="options"/>
-        <result column="right" property="right"/>
+        <result column="pass" property="pass"/>
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, user, paper, start
-        , scores, options, right
+        ID, user, paper, created , scores ,pass
     </sql>
 
 </mapper>

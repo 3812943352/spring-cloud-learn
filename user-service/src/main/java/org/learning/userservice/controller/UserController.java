@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 09:50:28
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-31 12:36:58
+ * @LastEditTime: 2025-04-08 01:31:55
  * @FilePath: user-service/src/main/java/org/learning/userservice/controller/UserController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -23,7 +23,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,9 +42,9 @@ import java.util.stream.Collectors;
 @Tag(name = "User", description = "用户相关接口")
 @Validated
 public class UserController {
+    private static final List<String> SUPPORTED_EXTENSIONS = Arrays.asList(".webp", ".png", ".jpg", ".jpeg");
     private final UserService userService;
     private final SmsService smsService;
-
     private final CaptchaService captchaService;
 
     @Autowired
@@ -51,6 +53,42 @@ public class UserController {
         this.smsService = smsService;
         this.captchaService = captchaService;
     }
+
+    public boolean validFile(MultipartFile file) {
+
+        String originalFilename = file.getOriginalFilename();
+        if (originalFilename != null) {
+            String extension = this.getFileExtension(originalFilename).toLowerCase();
+            return SUPPORTED_EXTENSIONS.contains(extension);
+        }
+        return false;
+    }
+
+    private String getFileExtension(String filename) {
+        int lastDotIndex = filename.lastIndexOf('.');
+        if (lastDotIndex > 0) {
+            return filename.substring(lastDotIndex);
+        }
+        return "";
+    }
+
+    @Operation(summary = "更新用戶照片")
+    @PostMapping(value = "/updateImg")
+    public Result<?> updateCourse(@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam("id") int id) {
+        if (!validFile(file)) {
+            return Result.failure(202, "请上传图片！");
+        }
+        String name = file.getOriginalFilename();
+        long size = file.getSize();
+        if (size > 1024 * 1024 * 5) {
+            return Result.failure(202, "文件大小不能超过5M！");
+        }
+        if (file.getOriginalFilename() == null) {
+            return Result.failure(202, "文件名不能为空！");
+        }
+        return this.userService.updateImg(file, name, id);
+    }
+
 
     @Operation(summary = "获取数据库信息")
     @PostMapping(value = "/getDatabase")
@@ -117,6 +155,7 @@ public class UserController {
         }
         return this.userService.resetPhone(oldPhone, newPhone, pwd);
     }
+
 
     @Operation(summary = "模糊搜索")
     @PostMapping(value = "/userBlur")

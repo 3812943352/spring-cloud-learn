@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-23 20:14:17
+ * @LastEditTime: 2025-04-09 13:32:47
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/CTypeController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */

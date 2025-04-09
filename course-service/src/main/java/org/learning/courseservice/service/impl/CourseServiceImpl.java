@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-29 16:32:13
+ * @LastEditTime: 2025-04-09 18:16:50
  * @FilePath: course-service/src/main/java/org/learning/courseservice/service/impl/CourseServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -240,28 +240,91 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, CourseEntity> i
 
     @Override
     public Result<?> listCourse() {
+        // 查询所有 CourseEntity 数据，选择 ID、name 和 paper 字段
         List<CourseEntity> courseEntities = this.list(new QueryWrapper<CourseEntity>()
                 .select("ID", "name", "paper"));
 
+        // 创建 formattedList 列表，用于存储格式化后的数据
         List<Map<String, Object>> formattedList = new ArrayList<>();
+
+        // 创建一个新的列表，用于存储 paper 为 0 的数据
+        List<Map<String, Object>> paper0List = new ArrayList<>();
+
         for (CourseEntity course : courseEntities) {
             Map<String, Object> map = new HashMap<>();
             map.put("value", course.getId());
             map.put("label", course.getName());
             map.put("paper", course.getPaper());
             formattedList.add(map);
+
+            // 如果 paper 字段值为 0，则将其加入到 paper0List 中
+            if (course.getPaper() != null && course.getPaper() == 0) {
+                Map<String, Object> paper0Map = new HashMap<>();
+                paper0Map.put("value", course.getId());
+                paper0Map.put("label", course.getName());
+                paper0Map.put("paper", course.getPaper());
+                paper0List.add(paper0Map);
+            }
         }
 
-        return Result.success(formattedList);
+        // 构造返回结果，包含 formattedList 和 paper0List
+        Map<String, Object> resultData = new HashMap<>();
+        resultData.put("formattedList", formattedList);
+        resultData.put("paper0List", paper0List);
+
+        return Result.success(resultData);
     }
 
+    @Override
+    public Result<?> getCourseByType(int pageNum, int pageSize, int type) {
+        Page<CourseEntity> resultPage = new Page<>(pageNum, pageSize);
+        QueryWrapper<CourseEntity> queryWrapper = new QueryWrapper<CourseEntity>()
+                .eq("type", type)
+                .eq("paper", 1)
+                .isNotNull("tem")
+                .and(wrapper -> wrapper.ne("JSON_LENGTH(video)", 0));
+
+        resultPage = this.page(resultPage, queryWrapper);
+        return Result.success(resultPage);
+    }
+
+    @Override
+    public Result<?> getCourseById(int id) {
+        CourseEntity courseEntity = this.getOne(new QueryWrapper<CourseEntity>().eq("ID", id));
+        return Result.success(courseEntity);
+    }
 
     @Override
     public Result<?> userHome() {
         List<CourseEntity> list = this.list(new QueryWrapper<CourseEntity>()
                 .select("id", "name", "cover")
                 .eq("isShow", 1)
+                .eq("paper", 1)
+                .isNotNull("tem")
+                .and(wrapper -> wrapper.ne("JSON_LENGTH(video)", 0))
         );
         return Result.success(list);
     }
+
+
+    @Override
+    public Result<?> coursePrice(int id) {
+        CourseEntity courseEntity = this.getOne(new QueryWrapper<CourseEntity>().eq("id", id));
+        double price = courseEntity.getPrice();
+        return Result.success(price);
+    }
+
+    @Override
+    public Result<?> videoList(int id) {
+        CourseEntity courseEntity = this.getOne(new QueryWrapper<CourseEntity>().eq("id", id));
+        List<Integer> videoList = courseEntity.getVideo();
+        return Result.success(videoList);
+    }
+
+    @Override
+    public Result<?> getCourseList(List<Integer> courseList) {
+        List<CourseEntity> courseEntities = this.list(new QueryWrapper<CourseEntity>().in("id", courseList));
+        return Result.success(courseEntities);
+    }
+
 }

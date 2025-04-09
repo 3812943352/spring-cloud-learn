@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:01:55
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-31 20:32:03
+ * @LastEditTime: 2025-04-01 19:36:38
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/ArticleServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -12,7 +12,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.common.commonmodule.resp.Result;
 import org.learning.contentsservice.entity.ArticleEntity;
+import org.learning.contentsservice.entity.VisitEntity;
 import org.learning.contentsservice.mapper.ArticleMapper;
+import org.learning.contentsservice.mapper.VisitMapper;
 import org.learning.contentsservice.service.ArticleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.mybatis.spring.MyBatisSystemException;
@@ -46,12 +48,17 @@ import java.util.stream.Stream;
  */
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity> implements ArticleService {
+    private final VisitMapper visitMapper;
     @Value("${file.content-dir}")
     private String contentDir;
     @Value("${regex1}")
     private String regex1;
     @Value("${regex2}")
     private String rege2;
+
+    public ArticleServiceImpl(VisitMapper visitMapper) {
+        this.visitMapper = visitMapper;
+    }
 
     @Override
     public Result<?> addArticle(MultipartFile img1, MultipartFile img2,
@@ -252,14 +259,19 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
     }
 
     @Override
-    public Result<?> getArtById(int id) {
+    public Result<?> getArtById(int id, String userId) {
         ArticleEntity articleEntity = this.getOne(new QueryWrapper<ArticleEntity>().eq("id", id));
         if (articleEntity == null) {
             return Result.failure("该文章不存在");
         }
         articleEntity.setVisit(articleEntity.getVisit() + 1);
         this.updateById(articleEntity);
-
+        VisitEntity visitEntity = new VisitEntity();
+        long date = System.currentTimeMillis() / 1000;
+        visitEntity.setArticle(articleEntity.getId());
+        visitEntity.setUser(userId);
+        visitEntity.setCreated(date);
+        visitMapper.insert(visitEntity);
         return Result.success(articleEntity);
     }
 
@@ -624,5 +636,15 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, ArticleEntity
         }
 
         return Result.success(groupedData);
+    }
+
+
+    @Override
+    public Result<?> suggest(int type) {
+        List<ArticleEntity> articleEntityList = this.list(new QueryWrapper<ArticleEntity>()
+                .eq("type", type)
+                .eq("suggest", 1)
+        );
+        return Result.success(articleEntityList);
     }
 }

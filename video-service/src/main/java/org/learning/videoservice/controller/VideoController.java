@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-23 18:29:03
+ * @LastEditTime: 2025-04-03 17:29:38
  * @FilePath: video-service/src/main/java/org/learning/videoservice/controller/VideoController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -76,28 +76,51 @@ public class VideoController {
 
 
     @Operation(summary = "删除视频")
-    @PostMapping(value = "delVideo")
+    @PostMapping(value = "/delVideo")
     public Result<?> delVideo(@RequestParam("id") int id) {
         return this.videoService.deleteVideo(id);
 
     }
 
     @Operation(summary = "视频信息分页")
-    @PostMapping(value = "getVideo")
+    @PostMapping(value = "/getVideo")
     public Result<?> getVideo(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
         return this.videoService.getVideo(pageNum, pageSize);
     }
 
     @Operation(summary = "视频信息模糊查询")
-    @PostMapping(value = "blurVideo")
+    @PostMapping(value = "/blurVideo")
     public Result<?> blurVideo(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize, @RequestParam("word") String word) {
         return this.videoService.blur(pageNum, pageSize, word);
     }
 
     @Operation(summary = "视频信息日期查询")
-    @PostMapping(value = "dateVideo")
+    @PostMapping(value = "/dateVideo")
     public Result<?> dateVideo(@RequestParam("pageNum") int pageNum, @RequestParam("pageNum") int pageSize, @RequestParam("pageNum") long startTime, @RequestParam("pageNum") long endTime) {
         return this.videoService.date(pageNum, pageSize, startTime, endTime);
+    }
+
+    @Operation(summary = "列表视频查询")
+    @PostMapping(value = "/listGetVideo")
+    public Result<?> listGetVideo(@RequestBody List<Integer> videoIds) {
+        return this.videoService.listGetVideo(videoIds);
+
+    }
+
+    @Operation(summary = "视频ID查询")
+    @PostMapping(value = "/getVideoById")
+    public Result<?> getVideoById(@RequestParam("ID") int id) {
+        return this.videoService.getVideoById(id);
+
+    }
+
+
+    @Operation(summary = "视频路径获取")
+    @PostMapping(value = "/getVideoPath")
+    public Result<?> getVideoPath(@RequestParam("course") int courseId,
+                                  @RequestParam("user") int userId,
+                                  @RequestParam("video") int videoId) {
+        return this.videoService.getVideoPath(courseId, userId, videoId);
     }
 
     public boolean validFile(MultipartFile file) {

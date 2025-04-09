@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:02:37
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-26 10:17:12
+ * @LastEditTime: 2025-04-01 11:30:33
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/CollectionServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -51,7 +51,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
         );
 
         if (articleEntity == null) {
-            return Result.failure("文章不存在，无法添加评论");
+            return Result.failure("文章不存在，无法添加收藏");
         }
 
         // 保存评论
@@ -61,7 +61,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
             // 更新文章的评论数
             int updatedRows = articleMapper.update(null,
                     new UpdateWrapper<ArticleEntity>()
-                            .setSql("comment = comment + 1")
+                            .setSql("collection = collection + 1")
                             .eq("id", collectionEntity.getArticle()));
 
             if (updatedRows <= 0) {

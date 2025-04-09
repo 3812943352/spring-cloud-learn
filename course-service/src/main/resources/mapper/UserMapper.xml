@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.learning.courseservice.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.learning.courseservice.entity.UserEntity">
+        <id column="ID" property="id"/>
+        <result column="username" property="username"/>
+        <result column="pwd" property="pwd"/>
+        <result column="role" property="role"/>
+        <result column="auth" property="auth"/>
+        <result column="created" property="created"/>
+        <result column="last_login" property="lastLogin"/>
+        <result column="phone" property="phone"/>
+        <result column="img" property="img"/>
+        <result column="sex" property="sex"/>
+        <result column="idNum" property="idNum"/>
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, username, pwd, role, auth, created, last_login, phone,img,sex,idNum
+    </sql>
+
+</mapper>

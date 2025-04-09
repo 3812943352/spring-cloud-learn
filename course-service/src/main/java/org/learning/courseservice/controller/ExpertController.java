@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-29 19:33:16
+ * @LastEditTime: 2025-04-01 13:42:28
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/ExpertController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -74,7 +74,8 @@ public class ExpertController {
             String name = "";
             return this.expertService.update(file, name, expertEntity);
         }
-
+        System.out.println(file.getOriginalFilename());
+        System.out.println(expertEntity.getArt());
         if (!validFile(file)) {
             return Result.failure(202, "请上传图片！");
         }

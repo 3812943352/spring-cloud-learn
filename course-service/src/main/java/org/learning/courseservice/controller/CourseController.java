@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-29 16:33:14
+ * @LastEditTime: 2025-04-07 21:42:20
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/CourseController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -92,6 +92,19 @@ public class CourseController {
         return this.courseService.del(id);
     }
 
+    @Operation(summary = "type获取课程")
+    @PostMapping(value = "/getCourseByType")
+    public Result<?> getCourseByType(@RequestParam("pageNum") Integer pageNum,
+                                     @RequestParam("pageSize") Integer pageSize,
+                                     @RequestParam("type") Integer type) {
+        return this.courseService.getCourseByType(pageNum, pageSize, type);
+    }
+
+    @Operation(summary = "ID获取课程")
+    @PostMapping(value = "/getCourseById")
+    public Result<?> getCourseById(@RequestParam("id") int id) {
+        return this.courseService.getCourseById(id);
+    }
 
     @Operation(summary = "模糊查询课程")
     @PostMapping(value = "/blurCourse")
@@ -122,6 +135,28 @@ public class CourseController {
     public Result<?> userHome() {
         return this.courseService.userHome();
     }
+
+
+    @Operation(summary = "课程价格")
+    @PostMapping(value = "/coursePrice")
+    public Result<?> coursePrice(@RequestParam(value = "id") int id) {
+        return this.courseService.coursePrice(id);
+    }
+
+
+    @Operation(summary = "课程价格")
+    @PostMapping(value = "/videoList")
+    public Result<?> videoList(@RequestParam(value = "id") int id) {
+        return this.courseService.videoList(id);
+    }
+
+
+    @Operation(summary = "已购买课程列表")
+    @PostMapping(value = "/getCourseList")
+    public Result<?> getCourseList(@RequestBody List<Integer> courseList) {
+        return this.courseService.getCourseList(courseList);
+    }
+
 
     public boolean validFile(MultipartFile file) {
 

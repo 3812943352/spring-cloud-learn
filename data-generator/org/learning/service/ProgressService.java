@@ -1,6 +1,6 @@
 package org.learning.service;
 
-import org.learning.entity.TemplateEntity;
+import org.learning.entity.ProgressEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author 王博
- * @since 2025-03-14
+ * @since 2025-04-03
  */
-public interface TemplateService extends IService<TemplateEntity> {
+public interface ProgressService extends IService<ProgressEntity> {
 
 }

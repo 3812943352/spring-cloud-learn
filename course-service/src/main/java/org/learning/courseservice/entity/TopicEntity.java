@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:26
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-19 20:42:38
+ * @LastEditTime: 2025-04-06 14:08:17
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/TopicEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -70,6 +70,7 @@ public class TopicEntity extends Model<TopicEntity> {
     public static class Option {
         private String option;
         private Boolean isAnswer;
+
 
         // Getters and Setters
         public String getOption() {

@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.learning.orderservice.mapper.OrderMapper">
+<mapper namespace="org.learning.orderservice.mapper.OrdersMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="org.learning.orderservice.entity.OrderEntity">
+    <resultMap id="BaseResultMap" type="org.learning.orderservice.entity.OrdersEntity">
         <id column="ID" property="id"/>
         <result column="created" property="created"/>
         <result column="user" property="user"/>
         <result column="course" property="course"/>
         <result column="status" property="status"/>
         <result column="price" property="price"/>
+        <result column="orderId" property="orderId"/>
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, created, user, course, status, price
+        ID, created, user, course, status, price,orderId
     </sql>
 
 </mapper>

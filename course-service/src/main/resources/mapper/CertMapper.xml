@@ -8,12 +8,16 @@
         <result column="course" property="course"/>
         <result column="cert" property="cert"/>
         <result column="created" property="created"/>
-        <result column="path" property="path"/>
+        <result column="tem" property="tem"/>
+        <result column="user" property="user"/>
+        <result column="phone" property="phone"/>
+        <result column="idNum" property="idNum"/>
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, course, cert, created, path
+        ID, course, cert, created, tem,user,idNum
     </sql>
 
 </mapper>

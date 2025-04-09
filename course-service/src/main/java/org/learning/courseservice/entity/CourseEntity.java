@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-29 16:14:11
+ * @LastEditTime: 2025-04-03 13:04:43
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/CourseEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -46,7 +46,7 @@ public class CourseEntity extends Model<CourseEntity> {
 
     @Schema(description = "课程价格")
     @TableField("price")
-    private BigDecimal price;
+    private Double price;
 
     @Schema(description = "课程描述")
     @TableField("des")

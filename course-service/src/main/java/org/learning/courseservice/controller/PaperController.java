@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:19
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-18 16:46:46
+ * @LastEditTime: 2025-04-07 02:14:57
  * @FilePath: course-service/src/main/java/org/learning/courseservice/controller/PaperController.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -10,9 +10,11 @@ package org.learning.courseservice.controller;
 
 import com.common.commonmodule.resp.Result;
 import io.swagger.v3.oas.annotations.Operation;
-import org.learning.courseservice.entity.PaperEntity;
+import org.learning.courseservice.entity.*;
 import org.learning.courseservice.service.PaperService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -73,6 +75,13 @@ public class PaperController {
                                 @RequestParam("end") long endTime) {
         return this.paperService.date(pageNum, pageSize, startTime, endTime);
     }
+
+    @Operation(summary = "用户获取试卷")
+    @PostMapping(value = "/getTopics")
+    public Result<?> getTopic(@RequestParam(value = "user") int user, @RequestParam(value = "course") int course, @RequestParam(value = "phone") String phone) {
+        return this.paperService.getTopic(user, course, phone);
+    }
+
 
     @Operation(summary = "课程列表")
     @PostMapping(value = "/listPaper")

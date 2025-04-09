@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 15:19:50
+ * @LastEditTime: 2025-04-08 04:39:41
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/CertEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -41,7 +41,7 @@ public class CertEntity extends Model<CertEntity> {
 
     @Schema(description = "课程名称")
     @TableField("course")
-    private String course;
+    private Integer course;
 
     @Schema(description = "证书编号")
     @TableField("cert")
@@ -51,9 +51,21 @@ public class CertEntity extends Model<CertEntity> {
     @TableField("created")
     private Long created;
 
-    @Schema(description = "证书保存路径")
-    @TableField("path")
-    private String path;
+    @Schema(description = "证书模板ID")
+    @TableField("tem")
+    private Integer tem;
+
+    @Schema(description = "用户ID")
+    @TableField("user")
+    private Integer user;
+
+    @Schema(description = "用户手机号")
+    @TableField("phone")
+    private String phone;
+
+    @Schema(description = "用户身份证号")
+    @TableField("idNum")
+    private String idNum;
 
     @Override
     public Serializable pkVal() {

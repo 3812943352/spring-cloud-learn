@@ -2,7 +2,7 @@
  * @Author: wangbo 3812943352@qq.com
  * @Date: 2024-11-09 16:18:53
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 16:36:57
+ * @LastEditTime: 2025-04-03 01:18:31
  * @FilePath: common-module/src/main/java/com/common/commonmodule/generator/GeneratorMySQL.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -50,7 +50,7 @@ public class GeneratorMySQL {
     /**
      * 要生成的表
      */
-    public static final String[] TABLES = {"template"};
+    public static final String[] TABLES = {"progress"};
 
 //,"area","data","department","gateway","user"
 

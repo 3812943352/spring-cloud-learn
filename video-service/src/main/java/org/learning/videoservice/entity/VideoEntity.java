@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-22 16:35:46
+ * @LastEditTime: 2025-04-03 00:50:22
  * @FilePath: video-service/src/main/java/org/learning/videoservice/entity/VideoEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -37,7 +37,7 @@ public class VideoEntity extends Model<VideoEntity> {
 
     @Schema(description = "视频ID")
     @TableId(value = "ID", type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     @Schema(description = "视频标题，最大长度255字符，不可为空")
     @TableField("title")
@@ -67,6 +67,9 @@ public class VideoEntity extends Model<VideoEntity> {
     @TableField("class_id")
     private Long classId;
 
+    @Schema(description = "视频时长")
+    @TableField("dur")
+    private double dur;
 
     @Override
     public Serializable pkVal() {

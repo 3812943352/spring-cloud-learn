@@ -2,7 +2,7 @@
  * @Author: wangbo 3812943352@qq.com
  * @Date: 2024-11-09 09:45:34
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-17 10:59:16
+ * @LastEditTime: 2025-04-06 14:29:16
  * @FilePath: gateway-service/src/main/java/org/learning/gatewayservice/config/GlobalFilterConfig.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -98,7 +98,6 @@ public class GlobalFilterConfig implements GlobalFilter, Ordered {
         String contentType = getContentType(exchange);
         Long contentLength = getContentLength(exchange);
         String userAgent = getUserAgent(exchange);
-//        String ip = request.getRemoteAddress() != null ? request.getRemoteAddress().toString() : "未知";
         String method = request.getMethod().toString();
         Boolean isApi = apiList.contains(reqController);
         String reqAdd = request.getURI().toString();
@@ -224,13 +223,6 @@ public class GlobalFilterConfig implements GlobalFilter, Ordered {
         return exchange.getResponse()
                 .writeWith(Mono.just(exchange.getResponse().bufferFactory().wrap(errorMsg.getBytes())));
     }
-
-    /**
-     * 判断当前请求URL是否为白名单地址，以及一些内置的不用登录的接口，
-     *
-     * @param url 请求的url。
-     * @return 是返回true，否返回false。
-     */
 
 
     private String getContentType(ServerWebExchange exchange) {

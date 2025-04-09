@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 09:50:21
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-13 21:31:26
+ * @LastEditTime: 2025-04-08 00:54:24
  * @FilePath: gateway-service/src/main/java/org/learning/gatewayservice/entity/UserEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -76,7 +76,7 @@ public class UserEntity extends Model<UserEntity> {
     private String img;
 
     @Schema(description = "身份证号")
-    @TableField("id_num")
+    @TableField("idNum")
     private String idNum;
 
     @Override

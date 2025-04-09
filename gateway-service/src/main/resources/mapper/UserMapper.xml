@@ -14,13 +14,13 @@
         <result column="phone" property="phone"/>
         <result column="img" property="img"/>
         <result column="sex" property="sex"/>
-        <result column="id_num" property="idNum"/>
+        <result column="idNum" property="idNum"/>
 
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, username, pwd, role, auth, created, last_login, phone,img,sex,id_num
+        ID, username, pwd, role, auth, created, last_login, phone,img,sex,idNum
     </sql>
 
 </mapper>

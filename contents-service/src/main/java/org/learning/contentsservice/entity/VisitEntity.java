@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:04:04
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 09:07:04
+ * @LastEditTime: 2025-04-01 11:40:10
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/entity/VisitEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -42,7 +42,7 @@ public class VisitEntity extends Model<VisitEntity> {
 
     @Schema(description = "浏览人ID")
     @TableField("user")
-    private Integer user;
+    private String user;
 
     @Schema(description = "浏览文章ID")
     @TableField("article")
@@ -50,7 +50,7 @@ public class VisitEntity extends Model<VisitEntity> {
 
     @Schema(description = "浏览时间")
     @TableField("created")
-    private Integer created;
+    private Long created;
 
     @Override
     public Serializable pkVal() {

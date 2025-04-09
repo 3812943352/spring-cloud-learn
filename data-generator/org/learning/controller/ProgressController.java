@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author 王博
- * @since 2025-03-14
+ * @since 2025-04-03
  */
 @RestController
-@RequestMapping("/templateEntity")
-public class TemplateController {
+@RequestMapping("/progressEntity")
+public class ProgressController {
 
 }

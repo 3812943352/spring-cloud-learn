@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 09:50:02
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-31 13:11:32
+ * @LastEditTime: 2025-04-09 17:33:06
  * @FilePath: user-service/src/main/java/org/learning/userservice/service/impl/UserServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -25,7 +25,15 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InterruptedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -45,6 +53,8 @@ import java.util.concurrent.TimeUnit;
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements UserService {
 
     private static final String KEY = "token_key";
+    @Value("${file.user-dir}")
+    private String userDir;
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
     @Autowired
@@ -191,7 +201,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     }
 
     public UserEntity getUserById(Integer id) {
-        return this.getById(id);  // 使用 MyBatis-Plus 提供的 getById 方法
+        return this.getById(id);
     }
 
     /**
@@ -213,7 +223,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
      */
     @Override
     public UserEntity getUserById(int ID) {
-        return this.getOne(new QueryWrapper<UserEntity>().eq("ID", ID).select("phone", "auth", "created", "last_login"));
+        return this.getOne(new QueryWrapper<UserEntity>().eq("ID", ID).select("phone", "auth", "created", "last_login", "idNum", "img"));
     }
 
     /**
@@ -260,18 +270,77 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
 
     @Override
     public Result<?> updateUser(UserEntity userEntity) {
-        System.out.println(userEntity.getId());
-        System.out.println(userEntity.getUsername());
         UserEntity user = this.getOne(new QueryWrapper<UserEntity>().eq("id", userEntity.getId()));
         if (user == null) {
             return Result.failure("用户不存在");
         }
         try {
-            this.saveOrUpdate(userEntity, new QueryWrapper<UserEntity>().eq("id", userEntity.getId()));
+            this.saveOrUpdate(userEntity);
             return Result.success("更新成功");
         } catch (Exception e) {
-            return Result.failure(String.valueOf(userEntity));
+            return Result.failure("更新失败" + e.getMessage());
         }
+    }
+
+    @Override
+    public Result<?> updateImg(MultipartFile file, String name, int id) {
+        String projectRoot = System.getProperty("user.dir");
+        // 拼接完整路径
+        String fullUploadDir = projectRoot + "/" + this.userDir;
+        Path path = Paths.get(fullUploadDir);
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectories(path);
+            } catch (IOException e) {
+                return Result.failure(202, "无法创建目录: " + path);
+            }
+        }
+        if (file == null || file.isEmpty()) {
+            return Result.failure("文件为空，请重新上传");
+        }
+        String oriName = this.getOne(new QueryWrapper<UserEntity>().eq("ID", id)).getImg();
+        Path newPath = path.resolve(name);
+
+
+        if (oriName == null) {
+            try (InputStream inputStream = file.getInputStream()) {
+                Files.copy(inputStream, newPath, StandardCopyOption.REPLACE_EXISTING);
+                UserEntity user = new UserEntity();
+                user.setImg(name);
+                user.setId(id);
+                this.updateById(user);
+                return Result.success("该文件与文件数据更新成功: " + name);
+
+            } catch (InterruptedIOException e) {
+                // 处理由于线程中断引起的IO异常
+                Thread.currentThread().interrupt(); // 重新设置中断状态
+                return Result.failure(203, "文件上传被中断: " + name + "请重试");
+            } catch (IOException e) {
+                return Result.failure(202, "该文件上传失败：" + name + "错误：" + e);
+            }
+        } else {
+            Path targetLocation = path.resolve(oriName);
+            try (InputStream inputStream = file.getInputStream()) {
+                boolean isDeleted = Files.deleteIfExists(targetLocation);
+                Files.copy(inputStream, newPath, StandardCopyOption.REPLACE_EXISTING);
+                if (isDeleted) {
+                    UserEntity user = new UserEntity();
+                    user.setImg(name);
+                    user.setId(id);
+                    this.updateById(user);
+                    return Result.success("该文件与文件数据更新成功: " + name);
+                } else {
+                    return Result.success("该文件更新成功但无法删除原文件: " + name);
+                }
+            } catch (InterruptedIOException e) {
+                // 处理由于线程中断引起的IO异常
+                Thread.currentThread().interrupt(); // 重新设置中断状态
+                return Result.failure(203, "文件上传被中断: " + name + "请重试");
+            } catch (IOException e) {
+                return Result.failure(202, "该文件上传失败：" + name + "错误：" + e);
+            }
+        }
+
     }
 
     @Override
@@ -332,6 +401,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         result.put("id", id);
         result.put("sex", user.getSex());
         result.put("phone", user.getPhone());
+        result.put("username", user.getUsername());
         long date = System.currentTimeMillis() / 1000;
         user.setLastLogin(date);
         this.updateById(user);

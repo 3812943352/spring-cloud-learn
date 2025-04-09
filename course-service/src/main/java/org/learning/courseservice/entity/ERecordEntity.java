@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 16:01:26
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-14 16:04:12
+ * @LastEditTime: 2025-04-07 01:40:43
  * @FilePath: course-service/src/main/java/org/learning/courseservice/entity/ERecordEntity.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -42,27 +42,24 @@ public class ERecordEntity extends Model<ERecordEntity> {
 
     @Schema(description = "考试人")
     @TableField("user")
-    private Integer user;
+    private String user;
 
     @Schema(description = "试卷ID")
     @TableField("paper")
     private Integer paper;
 
     @Schema(description = "开始时间")
-    @TableField("start")
-    private Long start;
+    @TableField("created")
+    private Long created;
 
     @Schema(description = "得分")
     @TableField("scores")
     private Integer scores;
 
-    @Schema(description = "用户选项列表")
-    @TableField("options")
-    private String options;
 
-    @Schema(description = "用户选择对错列表")
-    @TableField("right")
-    private String right;
+    @Schema(description = "是否通过考试")
+    @TableField("pass")
+    private Integer pass;
 
     @Override
     public Serializable pkVal() {

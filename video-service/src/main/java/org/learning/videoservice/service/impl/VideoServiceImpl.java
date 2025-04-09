@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-13 22:32:16
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-24 12:10:11
+ * @LastEditTime: 2025-04-04 23:55:40
  * @FilePath: video-service/src/main/java/org/learning/videoservice/service/impl/VideoServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -12,9 +12,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.common.commonmodule.resp.Result;
+import org.learning.videoservice.entity.ProgressEntity;
+import org.learning.videoservice.feignClient.CourseServiceFeignClient;
+import org.learning.videoservice.feignClient.OrderServiceFeginClient;
+import org.learning.videoservice.mapper.ProgressMapper;
 import org.learning.videoservice.mapper.VideoMapper;
 import org.learning.videoservice.entity.VideoEntity;
+import org.learning.videoservice.service.ProgressService;
 import org.learning.videoservice.service.VideoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +34,12 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static java.nio.file.StandardOpenOption.*;
@@ -42,8 +54,22 @@ import static java.nio.file.StandardOpenOption.*;
  */
 @Service
 public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> implements VideoService {
+    private final VideoMapper videoMapper;
+    private final OrderServiceFeginClient orderServiceFeginClient;
+    private final ProgressService progressService;
+    private final CourseServiceFeignClient courseServiceFeignClient;
+    private final ProgressMapper progressMapper;
     @Value("${file.videos-dir}") // 修复可能的注解参数缺少大括号的问题
     private String videosDir;
+
+    @Autowired
+    public VideoServiceImpl(VideoMapper videoMapper, OrderServiceFeginClient orderServiceFeginClient, ProgressService progressService, CourseServiceFeignClient courseServiceFeignClient, ProgressMapper progressMapper) {
+        this.videoMapper = videoMapper;
+        this.orderServiceFeginClient = orderServiceFeginClient;
+        this.courseServiceFeignClient = courseServiceFeignClient;
+        this.progressService = progressService;
+        this.progressMapper = progressMapper;
+    }
 
     public static void deleteAll(Path path) throws IOException {
         if (Files.exists(path)) {
@@ -346,6 +372,40 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
         }
     }
 
+
+    @Override
+    public Result<?> listGetVideo(List<Integer> videoList) {
+        if (videoList == null || videoList.isEmpty()) {
+            return Result.success(new ArrayList<>());
+        }
+
+        // 遍历 videoList，逐个查询视频信息
+        List<Object> result = new ArrayList<>();
+        for (Integer videoId : videoList) {
+            VideoEntity videoEntity = videoMapper.selectById(videoId);
+            if (videoEntity != null) {
+                // 将查询结果转换为目标格式
+                result.add(new Object() {
+                    public final Integer ID = videoEntity.getId();
+                    public final String title = videoEntity.getTitle();
+                    public final String des = videoEntity.getDes();
+                });
+            }
+        }
+
+        // 返回结果
+        return Result.success(result);
+    }
+
+    @Override
+    public Result<?> getVideoById(int id) {
+        VideoEntity videoEntity = this.getOne(new QueryWrapper<VideoEntity>().eq("ID", id));
+        if (videoEntity == null) {
+            return Result.failure("该视频不存在");
+        }
+        return Result.success(videoEntity);
+    }
+
     @Override
     public Result<?> blur(int pageNum, int pageSize, String word) {
         Page<VideoEntity> resultPage = new Page<>(pageNum, pageSize);
@@ -368,5 +428,74 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, VideoEntity> impl
         queryWrapper.between("created", startTime, endTime);
         resultPage = this.page(resultPage, queryWrapper);
         return Result.success(resultPage);
+    }
+
+
+    @Override
+    public Result<?> getVideoPath(int courseId, int userId, int videoId) {
+        // 检查用户是否购买了课程
+        Result<?> isBuyResult = orderServiceFeginClient.isBuy(userId, courseId);
+        Boolean isBuy = (Boolean) isBuyResult.getData();
+        if (!isBuy) {
+            return Result.success(isBuyResult, "您没有购买该课程");
+        }
+
+        // 获取课程的视频列表
+        Result<?> videoListResult = courseServiceFeignClient.videoList(courseId);
+        List<Integer> videoList = (List<Integer>) videoListResult.getData();
+        if (videoList == null || videoList.isEmpty()) {
+            return Result.failure("该课程没有视频内容");
+        }
+
+        // 初始化结果列表
+        List<Object> result = new ArrayList<>();
+
+        // 获取当前视频实体
+        VideoEntity currentVideoEntity = this.getOne(new QueryWrapper<VideoEntity>()
+                .eq("ID", videoId)
+                .select("content_path", "title", "created", "ID"));
+        if (currentVideoEntity == null) {
+            return Result.failure("当前视频不存在");
+        }
+        result.add(currentVideoEntity);
+
+        // 获取当前视频的播放进度
+        ProgressEntity progressEntity = progressMapper.selectOne(new QueryWrapper<ProgressEntity>()
+                .eq("video", videoId)
+                .eq("user", userId));
+
+        result.add(progressEntity);
+
+        // 批量查询其他视频的播放进度
+        List<VideoEntity> videoEntities = videoMapper.selectList(new QueryWrapper<VideoEntity>()
+                .in("ID", videoList)
+                .select("content_path", "title", "created", "ID"));
+
+        // 批量查询所有视频的播放进度
+        List<ProgressEntity> progressList = progressMapper.selectList(new QueryWrapper<ProgressEntity>()
+                .in("video", videoList)
+                .eq("user", userId));
+
+        // 将进度记录按 videoId 映射到 Map 中
+        Map<Integer, ProgressEntity> progressMap = progressList.stream()
+                .collect(Collectors.toMap(ProgressEntity::getVideo, Function.identity(), (existing, replacement) -> existing));
+        List<Object> otherVideos = new ArrayList<>();
+        for (VideoEntity videoEntity : videoEntities) {
+
+
+            // 获取对应视频的进度信息（如果不存在则为 null）
+            ProgressEntity otherProgressEntity = progressMap.getOrDefault(videoEntity.getId(), null);
+
+            // 将视频信息和进度信息组合
+            Map<String, Object> videoInfo = new HashMap<>();
+            videoInfo.put("video", videoEntity);
+            videoInfo.put("progress", otherProgressEntity);
+            otherVideos.add(videoInfo);
+        }
+
+        result.add(otherVideos);
+
+        // 返回最终结果
+        return Result.success(result, null, 200);
     }
 }

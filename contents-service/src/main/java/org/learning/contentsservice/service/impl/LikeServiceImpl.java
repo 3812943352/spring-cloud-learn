@@ -2,7 +2,7 @@
  * @Author: 3812943352 168046603+3812943352@users.noreply.github.com
  * @Date: 2025-03-14 09:03:26
  * @LastEditors: 3812943352 168046603+3812943352@users.noreply.github.com
- * @LastEditTime: 2025-03-26 10:16:06
+ * @LastEditTime: 2025-04-01 11:30:10
  * @FilePath: contents-service/src/main/java/org/learning/contentsservice/service/impl/LikeServiceImpl.java
  * @Description: 这是默认设置, 可以在设置》工具》File Description中进行配置
  */
@@ -50,7 +50,7 @@ public class LikeServiceImpl extends ServiceImpl<LikeMapper, LikeEntity> impleme
         );
 
         if (articleEntity == null) {
-            return Result.failure("文章不存在，无法添加评论");
+            return Result.failure("文章不存在，无法点赞");
         }
 
         // 保存评论
@@ -60,17 +60,17 @@ public class LikeServiceImpl extends ServiceImpl<LikeMapper, LikeEntity> impleme
             // 更新文章的评论数
             int updatedRows = articleMapper.update(null,
                     new UpdateWrapper<ArticleEntity>()
-                            .setSql("comment = comment + 1")
+                            .setSql("likes = likes + 1")
                             .eq("id", likeEntity.getArticle()));
 
             if (updatedRows <= 0) {
-                return Result.failure("更新文章评论数失败");
+                return Result.failure("更新文章点赞数失败");
             }
         } else {
-            return Result.failure("评论保存失败");
+            return Result.failure("保存失败");
         }
 
-        return Result.success("评论成功");
+        return Result.success("点赞成功");
     }
 
 
